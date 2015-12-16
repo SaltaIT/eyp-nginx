@@ -1,0 +1,11 @@
+
+    location / {
+        proxy_pass <%= @proxypass_url %>;
+<% if defined?(@proxy_http_version) -%>
+        proxy_http_version <%= @proxy_http_version %>;
+<% end -%>
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }

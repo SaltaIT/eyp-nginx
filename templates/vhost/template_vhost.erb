@@ -1,0 +1,7 @@
+server {
+	listen 80<% if @default %> default_server <% end %>;
+
+	root <%= @documentroot %>;
+	index <%= @directoryindex.join(' ') %>;
+
+	server_name <%= @servername %>;
