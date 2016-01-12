@@ -38,18 +38,27 @@ management, etc.) this is the time to mention it.
 * This is a great place to stick any warnings.
 * Can be in list or paragraph form.
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements 
 
 If your module requires anything extra before setting up (pluginsync enabled,
 etc.), mention it here.
 
 ### Beginning with nginx
 
-The very basic steps needed for a user to get the module up and running.
+nginx proxypass minimal configuration:
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+```yaml
+---
+classes:
+  - nginx
+nginx::add_default_vhost: false
+nginxvhosts:
+  default:
+    default: true
+nginxproxypass:
+  default:
+    proxypass_url: http://127.0.0.1:5601
+```
 
 ## Usage
 
@@ -65,15 +74,9 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+Tested on CentOS 6
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+We are pushing to have acceptance testing in place, so any new feature should
+have some test to check both presence and absence of any feature
