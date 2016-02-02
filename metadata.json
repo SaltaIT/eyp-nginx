@@ -2,7 +2,7 @@
   "name": "eyp-nginx",
   "version": "0.1.15",
   "author": "eyp",
-  "summary": "really basic nginx module",
+  "summary": "basic nginx module",
   "license": "Apache-2.0",
   "source": "",
   "project_page": null,
