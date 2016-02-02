@@ -1,4 +1,4 @@
-define nginx::proxypass (
+define nginx::stubstatus (
                           $stubstatus_url='/server-status',
                           $servername=$name,
                         ) {
