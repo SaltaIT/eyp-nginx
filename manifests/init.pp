@@ -68,9 +68,9 @@ class nginx   (
 
   file { '/etc/nginx/nginx.conf':
     ensure  => present,
-    owner   => "root",
-    group   => "root",
-    mode    => 0644,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     require => Package[$nginx::params::package],
     notify  => Service['nginx'],
     content => template("${module_name}/nginx.erb")
@@ -82,16 +82,16 @@ class nginx   (
     creates => $defaultdocroot,
   }
 
-  exec { "mkdir_p_${sites_dir}":
-    command => "mkdir -p ${sites_dir}",
+  exec { "mkdir_p_${nginx::params::sites_dir}":
+    command => "mkdir -p ${nginx::params::sites_dir}",
     require => File['/etc/nginx/nginx.conf'],
-    creates => $sites_dir,
+    creates => $nginx::params::sites_dir,
   }
 
-  exec { "mkdir_p_${sites_enabled_dir}":
-    command => "mkdir -p ${sites_enabled_dir}",
+  exec { "mkdir_p_${nginx::params::sites_enabled_dir}":
+    command => "mkdir -p ${nginx::params::sites_enabled_dir}",
     require => File['/etc/nginx/nginx.conf'],
-    creates => $sites_enabled_dir,
+    creates => $nginx::params::sites_enabled_dir,
   }
 
   if($add_default_vhost)
@@ -106,8 +106,8 @@ class nginx   (
       before  => Service['nginx'],
       require => Exec [
                         "mkdir_p_${defaultdocroot}",
-                        "mkdir_p_${sites_dir}",
-                        "mkdir_p_${sites_enabled_dir}"
+                        "mkdir_p_${nginx::params::sites_dir}",
+                        "mkdir_p_${nginx::params::sites_enabled_dir}"
                       ],
     }
 

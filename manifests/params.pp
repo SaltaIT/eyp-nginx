@@ -21,7 +21,7 @@ class nginx::params {
           $username='nginx'
           $workerprocesses_default=$::processorcount
         }
-        default: { fail("Unsupported RHEL/CentOS version!")  }
+        default: { fail('Unsupported RHEL/CentOS version!')  }
       }
     }
     'Debian':
@@ -34,19 +34,19 @@ class nginx::params {
           {
             /^14.*$/:
             {
-              $package="nginx-light"
+              $package='nginx-light'
               $include_epel=false
               $username='www-data'
               $workerprocesses_default='auto'
             }
-            default: { fail("Unsupported Ubuntu version! - $::operatingsystemrelease")  }
+            default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }
         }
-        'Debian': { fail("Unsupported")  }
-        default: { fail("Unsupported Debian flavour!")  }
+        'Debian': { fail('Unsupported')  }
+        default: { fail('Unsupported Debian flavour!')  }
       }
     }
-    default: { fail("Unsupported OS!")  }
+    default: { fail('Unsupported OS!')  }
   }
 
 }
