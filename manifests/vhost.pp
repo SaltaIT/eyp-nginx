@@ -40,13 +40,13 @@ define nginx::vhost (
   }
 
   concat { "${nginx::params::sites_dir}/${servername}":
-		ensure => 'present',
-		owner => 'root',
-		group => 'root',
-		mode => '0644',
-		notify => Service['nginx'],
-		require => Exec["mkdir p ${documentroot} ${servername} ${port}"],
-	}
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    notify  => Service['nginx'],
+    require => Exec["mkdir p ${documentroot} ${servername} ${port}"],
+  }
 
   concat::fragment{ "${nginx::params::sites_dir}/${servername} ini vhost":
     target  => "${nginx::params::sites_dir}/${servername}",
