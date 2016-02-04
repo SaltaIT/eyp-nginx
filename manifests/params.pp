@@ -13,7 +13,7 @@ class nginx::params {
 			$package='nginx'
       case $::operatingsystemrelease
       {
-        /^[67].*$/:
+        /^[5-7].*$/:
         {
           $purge_default_vhost='/etc/nginx/conf.d/default.conf'
           $include_epel=true
@@ -37,6 +37,7 @@ class nginx::params {
 							$purge_default_vhost=undef
               $package='nginx-light'
               $include_epel=false
+							$require_epel=undef
               $username='www-data'
               $workerprocesses_default='auto'
             }
