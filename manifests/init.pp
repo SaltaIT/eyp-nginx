@@ -46,7 +46,7 @@ class nginx   (
       $username=$nginx::params::username,
       $pidfile='/var/run/nginx.pid',
       $add_default_vhost=true,
-    ) inherits params{
+    ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
 
@@ -128,8 +128,8 @@ class nginx   (
   }
 
   service { 'nginx':
-    ensure  => 'running',
-    enable  => true,
+    ensure => 'running',
+    enable => true,
   }
 
 }
