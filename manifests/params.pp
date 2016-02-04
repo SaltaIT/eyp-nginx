@@ -10,6 +10,7 @@ class nginx::params {
   {
     'redhat':
     {
+			$package='nginx'
       case $::operatingsystemrelease
       {
         /^[67].*$/:
@@ -17,7 +18,6 @@ class nginx::params {
           $purge_default_vhost='/etc/nginx/conf.d/default.conf'
           $include_epel=true
           $require_epel=Class[ 'epel' ]
-          $package='nginx'
           $username='nginx'
           $workerprocesses_default=$::processorcount
         }
@@ -34,6 +34,7 @@ class nginx::params {
           {
             /^14.*$/:
             {
+							$purge_default_vhost=undef
               $package='nginx-light'
               $include_epel=false
               $username='www-data'
