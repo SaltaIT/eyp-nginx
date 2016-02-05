@@ -18,7 +18,7 @@ class nginx   (
   validate_array($serverstatus_allowedips)
 
   Exec {
-    path => '/usr/sbin:/usr/bin:/sbin:/bin',
+    path => '/usr/sbin:/usr/bin:/sbin:/bin'
   }
 
   if($nginx::params::include_epel)
