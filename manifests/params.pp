@@ -10,7 +10,7 @@ class nginx::params {
   {
     'redhat':
     {
-			$package='nginx'
+      $package='nginx'
       case $::operatingsystemrelease
       {
         /^[5-7].*$/:
@@ -34,10 +34,10 @@ class nginx::params {
           {
             /^14.*$/:
             {
-							$purge_default_vhost=undef
+              $purge_default_vhost=undef
               $package='nginx-light'
               $include_epel=false
-							$require_epel=undef
+              $require_epel=undef
               $username='www-data'
               $workerprocesses_default='auto'
             }
