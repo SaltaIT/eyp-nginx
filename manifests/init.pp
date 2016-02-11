@@ -4,7 +4,6 @@ class nginx   (
       $workerprocesses=$nginx::params::workerprocesses_default,
       $servertokens=$nginx::params::servertokens_default,
       $gziptypes=$nginx::params::gziptypes_default,
-      #default vhost
       $defaultdocroot='/var/www/default',
       $serverstatus_url='/server-status',
       $serverstatus_allowedips=[ '127.0.0.1' ],
