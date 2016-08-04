@@ -46,6 +46,7 @@ class nginx   (
       $username=$nginx::params::username,
       $pidfile='/var/run/nginx.pid',
       $add_default_vhost=true,
+      $default_vhost_port=80,
     ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
