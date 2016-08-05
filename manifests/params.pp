@@ -4,13 +4,22 @@ class nginx::params {
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $servertokens_default='off'
-  $gziptypes_default= [ 'text/plain', 'text/css', 'application/json', 'application/x-javascript', 'text/xml', 'application/xml', 'application/xml+rss', 'text/javascript' ]
+  $gziptypes_default= [
+    'text/plain',
+    'text/css',
+    'application/json',
+    'application/x-javascript',
+    'text/xml',
+    'application/xml',
+    'application/xml+rss',
+    'text/javascript'
+  ]
 
   case $::osfamily
   {
     'redhat':
     {
-			$package='nginx'
+      $package='nginx'
       case $::operatingsystemrelease
       {
         /^[67].*$/:
@@ -34,7 +43,7 @@ class nginx::params {
           {
             /^14.*$/:
             {
-							$purge_default_vhost=undef
+              $purge_default_vhost=undef
               $package='nginx-light'
               $include_epel=false
               $username='www-data'
