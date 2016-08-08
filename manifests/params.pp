@@ -4,7 +4,7 @@ class nginx::params {
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $servertokens_default='off'
-  $gziptypes_default= [
+  $gziptypes_default = [
     'text/plain',
     'text/css',
     'application/json',
@@ -22,7 +22,7 @@ class nginx::params {
       $package='nginx'
       case $::operatingsystemrelease
       {
-        /^[67].*$/:
+        /^[5-7].*$/:
         {
           $purge_default_vhost='/etc/nginx/conf.d/default.conf'
           $include_epel=true
@@ -46,6 +46,7 @@ class nginx::params {
               $purge_default_vhost=undef
               $package='nginx-light'
               $include_epel=false
+              $require_epel=undef
               $username='www-data'
               $workerprocesses_default='auto'
             }
