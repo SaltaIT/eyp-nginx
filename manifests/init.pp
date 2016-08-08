@@ -1,16 +1,16 @@
 # == Class: nginx
 #
 class nginx   (
-      $workerprocesses=$nginx::params::workerprocesses_default,
-      $servertokens=$nginx::params::servertokens_default,
-      $gziptypes=$nginx::params::gziptypes_default,
-      $defaultdocroot='/var/www/default',
-      $serverstatus_url='/server-status',
-      $serverstatus_allowedips=[ '127.0.0.1' ],
-      $username=$nginx::params::username,
-      $pidfile='/var/run/nginx.pid',
-      $add_default_vhost=true,
-      $default_vhost_port=80,
+      $workerprocesses         = $nginx::params::workerprocesses_default,
+      $servertokens            = $nginx::params::servertokens_default,
+      $gziptypes               = $nginx::params::gziptypes_default,
+      $defaultdocroot          = '/var/www/default',
+      $serverstatus_url        = '/server-status',
+      $serverstatus_allowedips = [ '127.0.0.1' ],
+      $username                = $nginx::params::username,
+      $pidfile                 = '/var/run/nginx.pid',
+      $add_default_vhost       = true,
+      $default_vhost_port      = 80,
     ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
