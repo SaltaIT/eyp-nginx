@@ -10,6 +10,7 @@ class nginx   (
       $username=$nginx::params::username,
       $pidfile='/var/run/nginx.pid',
       $add_default_vhost=true,
+      $default_vhost_port=80,
     ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
@@ -68,9 +69,17 @@ class nginx   (
       content => template("${module_name}/default_vhost_template.erb"),
       notify  => Service['nginx'],
       before  => Service['nginx'],
+<<<<<<< HEAD
       require => Exec [ [ "mkdir_p_${defaultdocroot}",
                         "mkdir_p_${nginx::params::sites_dir}",
                         "mkdir_p_${nginx::params::sites_enabled_dir}" ] ],
+=======
+      require => Exec[
+        "mkdir_p_${defaultdocroot}",
+        "mkdir_p_${nginx::params::sites_dir}",
+        "mkdir_p_${nginx::params::sites_enabled_dir}"
+      ],
+>>>>>>> 4e426d87b90b3e782ecd5a3a99f77b6544166afc
     }
 
     file { "${nginx::params::sites_enabled_dir}/default":
