@@ -4,7 +4,7 @@ class nginx::params {
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $servertokens_default='off'
-  $gziptypes_default= [
+  $gziptypes_default = [
     'text/plain',
     'text/css',
     'application/json',
