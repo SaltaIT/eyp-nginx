@@ -1,7 +1,7 @@
 define nginx::proxypass (
                           $proxypass_url,
-                          $servername=$name,
-                          $proxy_http_version=undef,
+                          $servername         = $name,
+                          $proxy_http_version = undef,
                         ) {
 
   concat::fragment{ "${nginx::params::sites_dir}/${servername} proxypass":

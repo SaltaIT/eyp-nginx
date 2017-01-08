@@ -1,8 +1,8 @@
 define nginx::stubstatus (
-                          $stubstatus_url='/server-status',
-                          $servername=$name,
-                          $allowed_ips=undef,
-                          $denied_ips=undef,
+                          $stubstatus_url = '/server-status',
+                          $servername     = $name,
+                          $allowed_ips    = undef,
+                          $denied_ips     = undef,
                         ) {
 
   if($allowed_ips!=undef and $denied_ips!=undef)

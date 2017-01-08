@@ -1,10 +1,10 @@
 define nginx::vhost (
-                      $port=80,
-                      $documentroot='/var/www/void',
-                      $servername=$name,
-                      $directoryindex=[ 'index.php', 'index.html', 'index.htm' ],
-                      $enable=true,
-                      $default=false,
+                      $port           = 80,
+                      $documentroot   = '/var/www/void',
+                      $servername     = $name,
+                      $directoryindex = [ 'index.php', 'index.html', 'index.htm' ],
+                      $enable         = true,
+                      $default        = false,
                     ) {
 
   if ! defined(Class['nginx'])
