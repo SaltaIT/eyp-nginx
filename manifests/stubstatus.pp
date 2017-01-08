@@ -21,7 +21,7 @@ define nginx::stubstatus (
     validate_array($denied_ips)
   }
 
-  concat::fragment{ "${nginx::params::sites_dir}/${servername} ${stubstatus_url} stubstatus":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${stubstatus_url} stubstatus":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => '09',
     content => template("${module_name}/vhost/stubstatus/stubstatus.erb"),

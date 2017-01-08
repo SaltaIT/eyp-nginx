@@ -9,7 +9,7 @@ define nginx::try_files (
                         ) {
   validate_array($try)
 
-  concat::fragment{ "${nginx::params::sites_dir}/${servername} ${stubstatus_url} stubstatus":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} try_files":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => '09',
     content => template("${module_name}/vhost/try_files.erb"),
