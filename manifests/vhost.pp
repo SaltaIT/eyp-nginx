@@ -1,3 +1,10 @@
+#
+# concat vhost
+# 00 - base vhost
+# 09 - stub status
+# 10 - proxypass
+# 99 - end vhost
+#
 define nginx::vhost (
                       $port           = 80,
                       $documentroot   = '/var/www/void',
