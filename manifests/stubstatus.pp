@@ -3,6 +3,7 @@ define nginx::stubstatus (
                           $servername     = $name,
                           $allowed_ips    = undef,
                           $denied_ips     = undef,
+                          $port           = '80',
                         ) {
 
   if($allowed_ips!=undef and $denied_ips!=undef)
@@ -21,7 +22,7 @@ define nginx::stubstatus (
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${servername} ${stubstatus_url} stubstatus":
-    target  => "${nginx::params::sites_dir}/${servername}",
+    target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => '09',
     content => template("${module_name}/vhost/stubstatus/stubstatus.erb"),
   }
