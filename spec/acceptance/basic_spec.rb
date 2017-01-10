@@ -58,7 +58,7 @@ describe 'nginx class' do
     end
 
     #default vhost
-    describe file("/etc/nginx/sites-available/caca") do
+    describe file("/etc/nginx/sites-available/80_caca") do
       it { should be_file }
       its(:content) { should match 'location /server-status' }
       its(:content) { should match 'proxy_pass http://127.0.0.1:5601' }
