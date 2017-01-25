@@ -1,21 +1,20 @@
 server {
-	listen <%= @default_vhost_port %> default_server;
+  listen <%= @default_vhost_port %> default_server;
 
-	root <%= @defaultdocroot %>;
-	index index.html index.htm;
+  root <%= @defaultdocroot %>;
+  index index.html index.htm;
 
-	server_name localhost;
+  server_name localhost;
 
-	location / {
-		try_files $uri $uri/ =404;
-	}
+  location / {
+    try_files $uri $uri/ =404;
+  }
 
-	location <%= @serverstatus_url %>
-	{
-		stub_status on;
-		<% @serverstatus_allowedips.each do |val| -%>allow <%= val %>;<% end %>
-		deny all;
-	}
+  location <%= @serverstatus_url %>
+  {
+    stub_status on;
+    <% @serverstatus_allowedips.each do |val| -%>allow <%= val %>;<% end %>
+    deny all;
+  }
 
 }
-

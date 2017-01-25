@@ -1,7 +1,7 @@
 server {
-	listen <%= @port %> <% if @default %> default_server <% end %>;
+  listen <%= @port %> <% if @default %> default_server <% end %>;
 
-	root <%= @documentroot %>;
-	index <%= @directoryindex.join(' ') %>;
+  root <%= @documentroot %>;
+  index <%= @directoryindex.join(' ') %>;
 
-	server_name <%= @servername %>;
+  server_name <%= @servername %>;
