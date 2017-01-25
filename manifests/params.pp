@@ -4,6 +4,7 @@ class nginx::params {
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $conf_d_dir='/etc/nginx/conf.d'
+  $fastcgi_params='/etc/nginx/fastcgi_params'
   $servertokens_default='off'
   $gziptypes_default = [
     'text/plain',

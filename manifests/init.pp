@@ -129,6 +129,16 @@ class nginx   (
     }
   }
 
+  file { $nginx::params::fastcgi_params:
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template("${module_name}/fcgi/fastcgi_params.erb"),
+    notify  => Service['nginx'],
+    require => Package[$nginx::params::package],
+  }
+
   service { 'nginx':
     ensure => 'running',
     enable => true,
