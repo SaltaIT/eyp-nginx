@@ -80,6 +80,8 @@ class nginx   (
       ensure  => "${nginx::params::sites_dir}/default",
       require => File["${nginx::params::sites_dir}/default"],
       notify  => Service['nginx'],
+      recurse => true,
+      purge   => true,
     }
   }
 
