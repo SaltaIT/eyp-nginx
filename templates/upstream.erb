@@ -1,0 +1,9 @@
+upstream <%= @upstream_name %>
+{
+  <% @server.each do |val| -%>
+  server <%= val %>;
+  <% end -%>
+  <% if defined?(@keepalive) -%>
+	keepalive <%= @keepalive %>;
+  <% end -%>
+}
