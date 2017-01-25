@@ -13,6 +13,7 @@ define nginx::upstream(
                         $server,
                         $upstream_name = $name,
                         $keepalive     = undef,
+                        $description   = undef,
                       ) {
 
   validate_array($server)

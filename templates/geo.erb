@@ -1,3 +1,6 @@
+<% if defined?(@description) -%>
+# <%= @description %>
+<% end -%>
 geo $<%= @geo_name %> {
   <%- if defined?(@default) -%>
   default 0;

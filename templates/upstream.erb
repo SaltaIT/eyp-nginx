@@ -1,3 +1,6 @@
+<% if defined?(@description) -%>
+# <%= @description %>
+<% end -%>
 upstream <%= @upstream_name %>
 {
   <%- @server.each do |val| -%>
