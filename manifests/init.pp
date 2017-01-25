@@ -98,9 +98,8 @@ class nginx   (
 
     file { "${nginx::params::sites_enabled_dir}/default":
       ensure  => "${nginx::params::sites_dir}/default",
-      require => File["${nginx::params::sites_dir}/default"],
       notify  => Service['nginx'],
-      require => File[ [ $nginx::params::sites_dir, $nginx::params::sites_enabled_dir ] ],
+      require => File[ [ $nginx::params::sites_dir, $nginx::params::sites_enabled_dir, "${nginx::params::sites_dir}/default" ] ],
     }
   }
 
