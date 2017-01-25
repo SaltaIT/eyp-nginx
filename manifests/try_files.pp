@@ -3,9 +3,10 @@
 #     try_files $uri $uri/ /index.php$is_args$args;
 # }
 define nginx::try_files (
-                          $try      = [ '$uri', '$uri/', ' =404' ],
-                          $location = $name,
-                          $port     = '80',
+                          $try        = [ '$uri', '$uri/', ' =404' ],
+                          $location   = '/',
+                          $port       = '80',
+                          $servername = $name,
                         ) {
   validate_array($try)
 

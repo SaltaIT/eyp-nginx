@@ -8,7 +8,7 @@
 #
 define nginx::vhost (
                       $port           = '80',
-                      $documentroot   = '/var/www/void',
+                      $documentroot   = "/var/www/${name}",
                       $servername     = $name,
                       $directoryindex = [ 'index.php', 'index.html', 'index.htm' ],
                       $enable         = true,
@@ -28,7 +28,7 @@ define nginx::vhost (
   {
     file { "${nginx::params::sites_enabled_dir}/${port}_${servername}":
       ensure  => "${nginx::params::sites_dir}/${servername}",
-      require => Concat["${nginx::params::sites_dir}/${port}_${servername}"],
+      require => [ File[$nginx::params::sites_enabled_dir], Concat["${nginx::params::sites_dir}/${port}_${servername}"] ],
       notify  => Service['nginx'],
     }
   }
@@ -36,7 +36,7 @@ define nginx::vhost (
   {
     file { "${nginx::params::sites_enabled_dir}/${port}_${servername}":
       ensure  => 'absent',
-      require => Concat["${nginx::params::sites_dir}/${port}_${servername}"],
+      require => [ File[$nginx::params::sites_enabled_dir], Concat["${nginx::params::sites_dir}/${port}_${servername}"] ],
       notify  => Service['nginx'],
     }
   }
@@ -53,7 +53,7 @@ define nginx::vhost (
     group   => 'root',
     mode    => '0644',
     notify  => Service['nginx'],
-    require => Exec["mkdir p ${documentroot} ${servername} ${port}"],
+    require => [ File[$nginx::params::sites_dir], Exec["mkdir p ${documentroot} ${servername} ${port}"] ],
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${servername} ini vhost":

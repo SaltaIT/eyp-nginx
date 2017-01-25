@@ -1,16 +1,16 @@
 
   location <%= @stubstatus_url %> {
-        stub_status on;
-        <%- if defined?(@allowed_ips) -%>
-        <%- @allowed_ips.each do | ip | -%>
-        allow <%= ip %>;
-        <%- end -%>
-        deny  all;
-        <%- end -%>
-        <%- if defined?(@denied_ips) -%>
-        <%- @denied_ips.each do | ip | -%>
-        deny  <%= ip %>;
-        <%- end -%>
-        allow all;
-        <%- end -%>
+    stub_status on;
+    <%- if defined?(@allowed_ips) -%>
+    <%- @allowed_ips.each do | ip | -%>
+    allow <%= ip %>;
+    <%- end -%>
+    deny  all;
+    <%- end -%>
+    <%- if defined?(@denied_ips) -%>
+    <%- @denied_ips.each do | ip | -%>
+    deny  <%= ip %>;
+    <%- end -%>
+    allow all;
+    <%- end -%>
     }
