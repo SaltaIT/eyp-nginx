@@ -1,0 +1,13 @@
+<% if defined?(@description) -%>
+# <%= @description %>
+<% end -%>
+geo $<%= @geo_name %> {
+  <%- if defined?(@default) -%>
+  default 0;
+  <%- end -%>
+  <%- if defined?(@variables) -%>
+    <%- @variables.each do | key, value | -%>
+  <%= key %> <%= value %>;
+    <%- end -%>
+  <%- end -%>
+}

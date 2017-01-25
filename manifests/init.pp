@@ -10,7 +10,8 @@ class nginx   (
       $username                = $nginx::params::username,
       $pidfile                 = '/var/run/nginx.pid',
       $add_default_vhost       = true,
-      $default_vhost_port      = 80,
+      $default_vhost_port      = '80',
+      $keepalive_timeout       = '1',
     ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
@@ -59,6 +60,12 @@ class nginx   (
     creates => $nginx::params::sites_enabled_dir,
   }
 
+  exec { "mkdir_p_${nginx::params::conf_d_dir}":
+    command => "mkdir -p ${nginx::params::conf_d_dir}",
+    require => File['/etc/nginx/nginx.conf'],
+    creates => $nginx::params::conf_d_dir,
+  }
+
   file { $nginx::params::sites_enabled_dir:
     ensure  => 'directory',
     owner   => 'root',
@@ -77,6 +84,16 @@ class nginx   (
     recurse => true,
     purge   => true,
     require => Exec["mkdir_p_${nginx::params::sites_dir}"],
+  }
+
+  file { $nginx::params::conf_d_dir:
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    recurse => true,
+    purge   => true,
+    require => Exec["mkdir_p_${nginx::params::conf_d_dir}"],
   }
 
   if($add_default_vhost)
@@ -110,6 +127,16 @@ class nginx   (
       require => Package[$nginx::params::package],
       notify  => Service['nginx'],
     }
+  }
+
+  file { $nginx::params::fastcgi_params:
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => template("${module_name}/fcgi/fastcgi_params.erb"),
+    notify  => Service['nginx'],
+    require => Package[$nginx::params::package],
   }
 
   service { 'nginx':
