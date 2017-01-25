@@ -5,9 +5,9 @@
 #
 # upstream apachebackend
 # {
-# 	server 127.0.0.1:81;
+#   server 127.0.0.1:81;
 #
-# 	keepalive 2;
+#   keepalive 2;
 # }
 define nginx::upstream(
                         $server,
