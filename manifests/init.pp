@@ -59,6 +59,26 @@ class nginx   (
     creates => $nginx::params::sites_enabled_dir,
   }
 
+  file { $nginx::params::sites_enabled_dir:
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    recurse => true,
+    purge   => true,
+    require => Exec["mkdir_p_${nginx::params::sites_enabled_dir}"],
+  }
+
+  file { $nginx::params::sites_dir:
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    recurse => true,
+    purge   => true,
+    require => Exec["mkdir_p_${nginx::params::sites_dir}"],
+  }
+
   if($add_default_vhost)
   {
     file { "${nginx::params::sites_dir}/default":
@@ -80,8 +100,7 @@ class nginx   (
       ensure  => "${nginx::params::sites_dir}/default",
       require => File["${nginx::params::sites_dir}/default"],
       notify  => Service['nginx'],
-      recurse => true,
-      purge   => true,
+      require => File[ [ $nginx::params::sites_dir, $nginx::params::sites_enabled_dir ] ],
     }
   }
 
