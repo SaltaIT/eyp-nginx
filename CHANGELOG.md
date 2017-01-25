@@ -4,3 +4,4 @@
 
 * **INCOMPATIBLE CHANGE**: changed vhost's file schema
 * added dependencies for sites_dir and sites_enabled_dir
+* **INCOMPATIBLE CHANGE**: default **document root** changed from **/var/www/void** to **"/var/www/${name}"**
