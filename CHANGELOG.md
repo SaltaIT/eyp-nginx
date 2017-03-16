@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.2
+
+* bugfix vhost enabled: true
+
 ## 0.2.1
 
 * stubstatus uses global variable **eypapache::monitips** for allowed_ips

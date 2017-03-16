@@ -27,7 +27,8 @@ define nginx::vhost (
   if($enable)
   {
     file { "${nginx::params::sites_enabled_dir}/${port}_${servername}":
-      ensure  => "${nginx::params::sites_dir}/${servername}",
+      ensure  => 'link',
+      target  => "${nginx::params::sites_dir}/${port}_${servername}",
       require => [ File[$nginx::params::sites_enabled_dir], Concat["${nginx::params::sites_dir}/${port}_${servername}"] ],
       notify  => Service['nginx'],
     }
