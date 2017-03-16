@@ -1,7 +1,7 @@
 define nginx::stubstatus (
                           $stubstatus_url = '/server-status',
                           $servername     = $name,
-                          $allowed_ips    = undef,
+                          $allowed_ips    = hiera_array('eypapache::monitips', undef),
                           $denied_ips     = undef,
                           $port           = '80',
                         ) {
