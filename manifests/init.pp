@@ -167,7 +167,7 @@ class nginx (
   # }
 
   #<%= @logdir %>/<%= @repo_id %>.log
-  logrotate::logs { "nginx":
+  logrotate::logs { 'nginx':
     ensure        => $logrotation_ensure,
     log           => "${logdir}/*.log",
     create_mode   => '0644',
