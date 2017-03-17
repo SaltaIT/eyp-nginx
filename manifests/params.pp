@@ -1,6 +1,5 @@
 class nginx::params {
 
-
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $conf_d_dir='/etc/nginx/conf.d'
@@ -43,7 +42,7 @@ class nginx::params {
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/:
+            /^1[46].*$/:
             {
               $purge_default_vhost=undef
               $package='nginx-light'

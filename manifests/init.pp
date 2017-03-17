@@ -168,17 +168,19 @@ class nginx (
 
   #<%= @logdir %>/<%= @repo_id %>.log
   logrotate::logs { "nginx":
-    ensure       => $logrotation_ensure,
-    log          => "${logdir}/*.log",
+    ensure        => $logrotation_ensure,
+    log           => "${logdir}/*.log",
     create_mode   => '0644',
-    create_owner  => 'nginx',
-    create_group  => 'nginx',
-    frequency    => $logrotation_frequency,
-    rotate       => $logrotation_rotate,
-    missingok    => true,
-    notifempty   => true,
-    compress     => true,
-    size         => $logrotation_size,
+    create_owner  => $username,
+    create_group  => $username,
+    frequency     => $logrotation_frequency,
+    rotate        => $logrotation_rotate,
+    missingok     => true,
+    notifempty    => true,
+    compress      => true,
+    size          => $logrotation_size,
+    sharedscripts => true,
+    postrotate    => "/bin/kill -USR1 `cat ${pidfile} 2>/dev/null` 2>/dev/null || true",
   }
 
   if($purge_logrotate_default)
