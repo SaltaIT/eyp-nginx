@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.3
+
+* added general logs as variables
+
 ## 0.2.2
 
 * bugfix vhost enabled: true
