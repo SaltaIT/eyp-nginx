@@ -12,6 +12,8 @@ class nginx   (
       $add_default_vhost       = true,
       $default_vhost_port      = '80',
       $keepalive_timeout       = '1',
+      $general_accesslog       = '/var/log/nginx/access.log',
+      $general_errorlog        = '/var/log/nginx/error.log',
     ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
@@ -142,6 +144,26 @@ class nginx   (
   service { 'nginx':
     ensure => 'running',
     enable => true,
+  }
+
+  #log rotation
+  # /var/log/nginx/*.log {
+  #   daily
+  #   missingok
+  #   rotate 52
+  #   compress
+  #   delaycompress
+  #   notifempty
+  #   create 640 nginx adm
+  #   sharedscripts
+  #   postrotate
+  #           [ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`
+  #   endscript
+  # }
+
+  if(defined(Class['::logrotate']))
+  {
+
   }
 
 }
