@@ -2,7 +2,7 @@
 
 ## 0.2.3
 
-* added general logs as variables
+* added customizable log directory
 
 ## 0.2.2
 

@@ -37,8 +37,8 @@ http {
   # Logging Settings
   ##
 
-  access_log <%= @general_accesslog %>;
-  error_log <%= @general_errorlog %>;
+  access_log <%= @logdir %>/<%= @general_accesslog_filename %>;
+  error_log <%= @logdir %>/<%= @general_errorlog_filename %>;
 
   ##
   # Gzip Settings

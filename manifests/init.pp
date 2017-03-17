@@ -1,20 +1,26 @@
 # == Class: nginx
 #
-class nginx   (
-      $workerprocesses         = $nginx::params::workerprocesses_default,
-      $servertokens            = $nginx::params::servertokens_default,
-      $gziptypes               = $nginx::params::gziptypes_default,
-      $defaultdocroot          = '/var/www/default',
-      $serverstatus_url        = '/server-status',
-      $serverstatus_allowedips = [ '127.0.0.1' ],
-      $username                = $nginx::params::username,
-      $pidfile                 = '/var/run/nginx.pid',
-      $add_default_vhost       = true,
-      $default_vhost_port      = '80',
-      $keepalive_timeout       = '1',
-      $general_accesslog       = '/var/log/nginx/access.log',
-      $general_errorlog        = '/var/log/nginx/error.log',
-    ) inherits nginx::params{
+class nginx (
+              $workerprocesses            = $nginx::params::workerprocesses_default,
+              $servertokens               = $nginx::params::servertokens_default,
+              $gziptypes                  = $nginx::params::gziptypes_default,
+              $defaultdocroot             = '/var/www/default',
+              $serverstatus_url           = '/server-status',
+              $serverstatus_allowedips    = [ '127.0.0.1' ],
+              $username                   = $nginx::params::username,
+              $pidfile                    = '/var/run/nginx.pid',
+              $add_default_vhost          = true,
+              $default_vhost_port         = '80',
+              $keepalive_timeout          = '1',
+              $general_accesslog_filename = 'access.log',
+              $general_errorlog_filename  = 'error.log',
+              $logrotation_ensure         = 'present',
+              $logrotation_frequency      = 'daily',
+              $logrotation_rotate         = '15',
+              $logrotation_size           = '100M',
+              $logdir                     = '/var/log/nginx',
+              $purge_logrotate_default    = true,
+            ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
 
@@ -147,23 +153,39 @@ class nginx   (
   }
 
   #log rotation
-  # /var/log/nginx/*.log {
+  # /var/log/nginx/*log {
+  #   create 0644 nginx nginx
   #   daily
+  #   rotate 10
   #   missingok
-  #   rotate 52
-  #   compress
-  #   delaycompress
   #   notifempty
-  #   create 640 nginx adm
+  #   compress
   #   sharedscripts
   #   postrotate
-  #           [ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`
+  #       /bin/kill -USR1 `cat /run/nginx.pid 2>/dev/null` 2>/dev/null || true
   #   endscript
   # }
 
-  if(defined(Class['::logrotate']))
-  {
+  #<%= @logdir %>/<%= @repo_id %>.log
+  logrotate::logs { "nginx":
+    ensure       => $logrotation_ensure,
+    log          => "${logdir}/*.log",
+    create_mode   => '0644',
+    create_owner  => 'nginx',
+    create_group  => 'nginx',
+    frequency    => $logrotation_frequency,
+    rotate       => $logrotation_rotate,
+    missingok    => true,
+    notifempty   => true,
+    compress     => true,
+    size         => $logrotation_size,
+  }
 
+  if($purge_logrotate_default)
+  {
+    file { '/etc/logrotate.d/nginx':
+      ensure => 'absent',
+    }
   }
 
 }
