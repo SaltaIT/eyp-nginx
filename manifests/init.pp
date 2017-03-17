@@ -16,7 +16,7 @@ class nginx (
               $general_errorlog_filename  = 'error.log',
               $logrotation_ensure         = 'present',
               $logrotation_frequency      = 'daily',
-              $logrotation_rotate         = '15',
+              $logrotation_rotate         = '30',
               $logrotation_size           = '100M',
               $logdir                     = '/var/log/nginx',
               $purge_logrotate_default    = true,
