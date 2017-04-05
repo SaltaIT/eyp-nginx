@@ -13,6 +13,8 @@ define nginx::vhost (
                       $directoryindex = [ 'index.php', 'index.html', 'index.htm' ],
                       $enable         = true,
                       $default        = false,
+                      $error_log      = "${nginx::logdir}/error_${name}.log",
+                      $access_log     = "${nginx::logdir}/access_${name}.log",
                     ) {
 
   if ! defined(Class['nginx'])

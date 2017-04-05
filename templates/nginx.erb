@@ -37,8 +37,8 @@ http {
   # Logging Settings
   ##
 
-  access_log /var/log/nginx/access.log;
-  error_log /var/log/nginx/error.log;
+  access_log <%= @logdir %>/<%= @general_accesslog_filename %>;
+  error_log <%= @logdir %>/<%= @general_errorlog_filename %>;
 
   ##
   # Gzip Settings

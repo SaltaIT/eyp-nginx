@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 0.2.4
+
+* added postrotate to logrotate config
+* Ubuntu 16.04 support
+
+## 0.2.3
+
+* added customizable log directory
+
 ## 0.2.2
 
 * bugfix vhost enabled: true
