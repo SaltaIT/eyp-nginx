@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.5
+
+* limit puppetlabs-concat to < 3.0.0
+
 ## 0.2.4
 
 * added postrotate to logrotate config
