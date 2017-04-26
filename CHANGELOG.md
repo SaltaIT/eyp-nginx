@@ -3,6 +3,7 @@
 ## 0.2.6
 
 * **INCOMPATIBLE CHANGE**: removed default options for proxypass
+* added resolver option for http (**nginx**)
 
 ## 0.2.5
 
