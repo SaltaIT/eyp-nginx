@@ -60,7 +60,24 @@ nginx::proxypass { 'example':
 }
 ```
 
-nginx proxypass minimal configuration using yaml syntax:
+## Usage
+
+### nginx fordward proxy
+
+```puppet
+class { 'nginx':
+  add_default_vhost => false,
+  resolver => [ '8.8.8.8' ],
+}
+
+nginx::vhost { 'proxy': }
+
+nginx::proxypass { 'proxy':
+  proxypass_url => 'http://$http_host$uri$is_args$args',
+}
+```
+
+### nginx proxypass minimal configuration using yaml syntax
 
 ```yaml
 ---
@@ -74,11 +91,6 @@ nginxproxypass:
   default:
     proxypass_url: http://127.0.0.1:5601
 ```
-
-## Usage
-
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
 
 ## Reference
 
