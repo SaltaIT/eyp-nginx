@@ -55,7 +55,7 @@ http {
   gzip_types <%= @gziptypes.join(' ') %>;
 
   <%- if defined?(@resolver) -%>
-  resolver <%= @resolver.join(' ') %>
+  resolver <%= @resolver.join(' ') %>;
   <%- end -%>
 
   ##
