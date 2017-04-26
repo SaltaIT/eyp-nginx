@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.6
+
+* **INCOMPATIBLE CHANGE**: removed default options for proxypass
+
 ## 0.2.5
 
 * limit puppetlabs-concat to < 3.0.0

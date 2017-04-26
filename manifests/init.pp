@@ -20,6 +20,7 @@ class nginx (
               $logrotation_size           = '100M',
               $logdir                     = '/var/log/nginx',
               $purge_logrotate_default    = true,
+              $resolver                   = undef,
             ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
