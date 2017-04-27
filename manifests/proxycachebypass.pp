@@ -1,8 +1,8 @@
 define nginx::proxycachebypass(
                               $proxypass_url,
                               $bypass,
-                              $servername         = $name,
-                              $port               = '80',
+                              $servername = $name,
+                              $port       = '80',
                             ) {
   #fragment name
   $proxypass_url_clean = regsubst($proxypass_url, '[^a-zA-Z]+', '_')
