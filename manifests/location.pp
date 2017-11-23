@@ -8,3 +8,29 @@
 #     fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
 #     fastcgi_pass   php-fpm;
 # }
+# location ~ \.php {
+#  include fastcgi.conf;
+#  fastcgi_split_path_info ^(.+\.php)(/.+)$;
+#  fastcgi_pass unix:/var/run/php-fpm/php7.1-fpm.sock;
+# }
+# location ~ /\.ht {
+#  deny all;
+# }
+define nginx::location (
+                          $location                = '/',
+                          $location_match          = '=',
+                          $include                 = [],
+                          $deny                    = [],
+                          $port                    = '80',
+                          $servername              = $name,
+                          $description             = undef,
+                          $fastcgi_split_path_info = undef,
+                          $fastcgi_pass            = undef,
+                        ) {
+
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} location":
+    target  => "${nginx::params::sites_dir}/${port}_${servername}",
+    order   => '02',
+    content => template("${module_name}/vhost/location.erb"),
+  }
+}

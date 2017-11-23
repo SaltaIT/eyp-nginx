@@ -12,7 +12,7 @@ define nginx::try_files (
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} try_files":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => '09',
+    order   => '01',
     content => template("${module_name}/vhost/try_files.erb"),
   }
 }

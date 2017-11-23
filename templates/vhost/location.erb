@@ -1,0 +1,24 @@
+
+  <%- if defined?(@description) -%>
+  #
+  # <%= @description %>
+  #
+  <%- end -%>
+  location <%= @location_match %> <%= @location %> {
+    <%- if defined?(@fastcgi_split_path_info) -%>
+    fastcgi_split_path_info <%= @fastcgi_split_path_info %>;
+    <%- end -%>
+    <%- if defined?(@fastcgi_pass) -%>
+    fastcgi_pass <%= @fastcgi_pass %>;
+    <%- end -%>
+    <%- if @include.any? -%>
+      <%- @include.each do |inc| -%>
+    include <%= inc %>;
+      <%- end -%>
+    <%- end -%>
+    <%- if @deny.any? -%>
+      <%- @deny.each do |item| -%>
+    deny <%= item %>;
+      <%- end -%>
+    <%- end -%>
+  }
