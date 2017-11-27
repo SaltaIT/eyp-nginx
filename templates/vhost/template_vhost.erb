@@ -1,5 +1,5 @@
 server {
-  listen <%= @port %> <% if @default %> default_server <% end %>;
+  listen <%= @port %><% if @default %> default_server<% end %>;
 
   root <%= @documentroot %>;
   index <%= @directoryindex.join(' ') %>;
@@ -8,3 +8,7 @@ server {
 
   access_log <%= @access_log %>;
   error_log <%= @error_log %>;
+
+  <%- if defined?(@charset) -%>
+  charset <%= @charset %>;
+  <%- end -%>

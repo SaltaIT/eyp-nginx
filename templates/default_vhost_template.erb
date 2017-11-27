@@ -17,4 +17,8 @@ server {
     deny all;
   }
 
+  <%- if defined?(@charset) -%>
+  charset <%= @charset %>;
+  <%- end -%>
+
 }

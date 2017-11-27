@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 0.2.7
+
+* added charset option to **nginx::vhost**
+* added **nginx::location**
+* added **nginx::custom_conf**
+
 ## 0.2.6
 
 * **INCOMPATIBLE CHANGE**: removed default options for proxypass

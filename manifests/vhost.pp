@@ -2,6 +2,7 @@
 # concat vhost
 # 00 - base vhost
 # 01 - try_files
+# 02 - location 
 # 09 - stub status
 # 10 - proxypass
 # 99 - end vhost
@@ -15,6 +16,7 @@ define nginx::vhost (
                       $default        = false,
                       $error_log      = "${nginx::logdir}/error_${name}.log",
                       $access_log     = "${nginx::logdir}/access_${name}.log",
+                      $charset        = undef,
                     ) {
 
   if ! defined(Class['nginx'])
