@@ -2,10 +2,12 @@
 # concat vhost
 # 00 - base vhost
 # 01 - try_files
-# 02 - location 
+# 02 - location
 # 09 - stub status
 # 10 - proxypass
 # 99 - end vhost
+#
+# puppet2sitepp @nginxvhosts
 #
 define nginx::vhost (
                       $port           = '80',

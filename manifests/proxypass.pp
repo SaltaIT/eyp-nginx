@@ -1,3 +1,4 @@
+# puppet2sitepp @nginxproxypass
 define nginx::proxypass (
                           $proxypass_url,
                           $servername         = $name,
