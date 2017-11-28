@@ -19,6 +19,7 @@ define nginx::vhost (
                       $error_log      = "${nginx::logdir}/error_${name}.log",
                       $access_log     = "${nginx::logdir}/access_${name}.log",
                       $charset        = undef,
+                      $listen_address = undef,
                     ) {
 
   if ! defined(Class['nginx'])

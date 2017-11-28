@@ -1,5 +1,5 @@
 server {
-  listen <%= @port %><% if @default %> default_server<% end %>;
+  listen <% if defined?(@listen_address) %><%= @listen_address %>:<% end %><%= @port %><% if @default %> default_server<% end %>;
 
   root <%= @documentroot %>;
   index <%= @directoryindex.join(' ') %>;

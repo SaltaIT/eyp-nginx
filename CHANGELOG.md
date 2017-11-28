@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.8
+
+* added **listen_address** to **nginx::vhost**
+
 ## 0.2.7
 
 * added charset option to **nginx::vhost**
