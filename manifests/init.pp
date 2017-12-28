@@ -21,6 +21,11 @@ class nginx (
               $logdir                     = '/var/log/nginx',
               $purge_logrotate_default    = true,
               $resolver                   = undef,
+              $manage_service             = true,
+              $manage_docker_service      = true,
+              $service_ensure             = 'running',
+              $service_enable             = true,
+
             ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
@@ -73,6 +78,22 @@ class nginx (
     command => "mkdir -p ${nginx::params::conf_d_dir}",
     require => File['/etc/nginx/nginx.conf'],
     creates => $nginx::params::conf_d_dir,
+  }
+
+  exec { "mkdir_p_${nginx::params::baseconf}":
+    command => "mkdir -p ${nginx::params::baseconf}",
+    require => File['/etc/nginx/nginx.conf'],
+    creates => $nginx::params::baseconf,
+  }
+
+  file { $nginx::params::baseconf:
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    recurse => true,
+    purge   => true,
+    require => Exec["mkdir_p_${nginx::params::baseconf}"],
   }
 
   file { $nginx::params::sites_enabled_dir:
@@ -148,9 +169,7 @@ class nginx (
     require => Package[$nginx::params::package],
   }
 
-  service { 'nginx':
-    ensure => 'running',
-    enable => true,
+  class { 'nginx::service':
   }
 
   #log rotation

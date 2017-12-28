@@ -22,10 +22,7 @@ define nginx::vhost (
                       $listen_address = undef,
                     ) {
 
-  if ! defined(Class['nginx'])
-  {
-    fail('You must include the nginx base class before using any nginx defined resources')
-  }
+  include ::nginx
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
@@ -37,7 +34,7 @@ define nginx::vhost (
       ensure  => 'link',
       target  => "${nginx::params::sites_dir}/${port}_${servername}",
       require => [ File[$nginx::params::sites_enabled_dir], Concat["${nginx::params::sites_dir}/${port}_${servername}"] ],
-      notify  => Service['nginx'],
+      notify  => Class['::nginx::service'],
     }
   }
   else
@@ -45,7 +42,7 @@ define nginx::vhost (
     file { "${nginx::params::sites_enabled_dir}/${port}_${servername}":
       ensure  => 'absent',
       require => [ File[$nginx::params::sites_enabled_dir], Concat["${nginx::params::sites_dir}/${port}_${servername}"] ],
-      notify  => Service['nginx'],
+      notify  => Class['::nginx::service'],
     }
   }
 
@@ -60,7 +57,7 @@ define nginx::vhost (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    notify  => Service['nginx'],
+    notify  => Class['::nginx::service'],
     require => [ File[$nginx::params::sites_dir], Exec["mkdir p ${documentroot} ${servername} ${port}"] ],
   }
 
