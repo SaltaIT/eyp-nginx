@@ -1,6 +1,7 @@
 # puppet2sitepp @nginxproxypass
 define nginx::proxypass (
                           $proxypass_url,
+                          $location           = '/',
                           $servername         = $name,
                           $proxy_http_version = undef,
                           $port               = '80',

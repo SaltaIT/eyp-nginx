@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.9
+
+* added **nginx::proxyredirect**
+
 ## 0.2.8
 
 * added **listen_address** to **nginx::vhost**

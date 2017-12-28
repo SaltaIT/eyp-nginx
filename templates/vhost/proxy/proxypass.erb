@@ -1,5 +1,5 @@
 
-  location / {
+  location <%= @location %> {
     proxy_pass <%= @proxypass_url %>;
 <% if defined?(@proxy_http_version) -%>
     proxy_http_version <%= @proxy_http_version %>;
