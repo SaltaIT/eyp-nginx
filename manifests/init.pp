@@ -97,8 +97,6 @@ class nginx (
     owner   => 'root',
     group   => $nginx::params::username,
     mode    => '0750',
-    recurse => true,
-    purge   => true,
     require => Exec["mkdir_p_${nginx::params::baseconf}"],
   }
 
@@ -146,7 +144,7 @@ class nginx (
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
-    mode    => '0755',
+    mode    => '0644',
     content => file("${module_name}/mime.types"),
   }
 

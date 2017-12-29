@@ -1,4 +1,4 @@
-# puppet2sitepp @apachecerts
+
 define nginx::cert (
                       $pk_source           = undef,
                       $pk_file             = undef,
@@ -35,7 +35,8 @@ define nginx::cert (
   }
   else
   {
-    file { "${apache::params::ssl_dir}/${certname}_pk${version}.pk":
+    fail("${nginx::params::ssl_dir}/${certname}_pk${version}.pk")
+    file { "${nginx::params::ssl_dir}/${certname}_pk${version}.pk":
       ensure => 'link',
       target => $pk_file,
       notify => Class['::nginx::service'],
@@ -45,19 +46,19 @@ define nginx::cert (
 
   if($cert_source!=undef)
   {
-    file { "${apache::params::ssl_dir}/${certname}_cert${version}.cert":
+    file { "${nginx::params::ssl_dir}/${certname}_cert${version}.cert":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      require => [ Package[$apache::params::packagename], File["${apache::params::baseconf}/ssl"] ],
+      require => [ Package[$nginx::params::package], File[$nginx::params::ssl_dir] ],
       source  => $cert_source,
       notify  => Class['::nginx::service'],
     }
   }
   else
   {
-    file { "${apache::params::ssl_dir}/${certname}_cert${version}.cert":
+    file { "${nginx::params::ssl_dir}/${certname}_cert${version}.cert":
       ensure => 'link',
       target => $cert_file,
       notify => Class['::nginx::service'],
@@ -68,12 +69,12 @@ define nginx::cert (
   if($intermediate_source!=undef)
   {
 
-    file { "${apache::params::ssl_dir}/${certname}_intermediate${version}.cert":
+    file { "${nginx::params::ssl_dir}/${certname}_intermediate${version}.cert":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      require => [ Package[$apache::params::packagename], File["${apache::params::baseconf}/ssl"] ],
+      require => [ Package[$nginx::params::package], File[$nginx::params::ssl_dir] ],
       source  => $intermediate_source,
       notify  => Class['::nginx::service'],
     }
