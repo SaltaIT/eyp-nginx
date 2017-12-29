@@ -9,6 +9,13 @@ class nginx::service() inherits nginx {
   {
     if($nginx::manage_service)
     {
+      exec { 'nginx test':
+        command     => "nginx -t",
+        refreshonly => true,
+        before      => Service[$nginx::params::servicename],
+        path        => '/usr/sbin:/usr/bin:/sbin:/bin',
+      }
+
       service { $nginx::params::servicename:
         ensure  => $nginx::service_ensure,
         name    => $nginx::params::servicename,
