@@ -82,7 +82,7 @@ class nginx (
 
   exec { "mkdir_p_${nginx::params::baseconf}":
     command => "mkdir -p ${nginx::params::baseconf}",
-    require => File['/etc/nginx/nginx.conf'],
+    require => Package[$nginx::params::package],
     creates => $nginx::params::baseconf,
   }
 
