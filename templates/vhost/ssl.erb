@@ -9,3 +9,6 @@
   <%- if @ssl_ciphers.any? -%>
   ssl_ciphers         <%= @ssl_ciphers.join(':') %>;
   <%- end -%>
+  <%- if @random_dhparams -%>
+  ssl_dhparam <%= scope.lookupvar('nginx::params::ssl_dir') %>/dhparam_<%= @port %>_<%= @servername %>.pem;
+  <%- end -%>

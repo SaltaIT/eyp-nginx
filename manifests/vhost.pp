@@ -26,6 +26,7 @@ define nginx::vhost (
                       $certname_version = '',
                       $ssl_protocols    = [ 'TLSv1', 'TLSv1.1', 'TLSv1.2' ],
                       $ssl_ciphers      = [ 'HIGH', '!aNULL', '!MD5' ],
+                      $random_dhparams  = true,
                     ) {
 
   include ::nginx
@@ -79,6 +80,17 @@ define nginx::vhost (
       target  => "${nginx::params::sites_dir}/${port}_${servername}",
       order   => '03',
       content => template("${module_name}/vhost/ssl.erb"),
+    }
+
+    if($random_dhparams)
+    {
+      # <%= scope.lookupvar('nginx::params::ssl_dir') %>/<%= @certname %>_pk<%= @certname_version %>.pk;
+      # openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+      exec { "dhparams ${certname} ${port} ${servername}":
+        command => "openssl dhparam -out ${nginx::params::ssl_dir}/dhparam_${port}_${servername}.pem 2048",
+        creates => "${nginx::params::ssl_dir}/dhparam_${port}_${servername}.pem",
+        notify  => Class['::nginx::service'],
+      }
     }
   }
 

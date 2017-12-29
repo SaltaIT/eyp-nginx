@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.16
+
+* added option to randomly generate **ssl_dhparams**
+
 ## 0.2.15
 
 * changed rewrite directive to return on **nginx::redirect**
