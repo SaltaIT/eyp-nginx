@@ -10,8 +10,8 @@ define nginx::redirect (
                         ) {
   include ::nginx
 
-  concat::fragment{ "${apache::params::baseconf}/conf.d/sites/${order}-${servername}-${port}.conf.run redirect ${match} ${path} ${url}":
-    target  => "${apache::params::baseconf}/conf.d/sites/${order}-${servername}-${port}.conf.run",
+  concat::fragment{ "target  => "${nginx::params::sites_dir}/${port}_${servername}" redirect ${match} ${url}":
+    target  => "${nginx::params::sites_dir}/${port}_${servername}",
     content => template("${module_name}/vhost/redirects.erb"),
     order   => '04',
   }
