@@ -79,25 +79,6 @@ describe 'nginx class' do
       it { is_expected.to be_running }
     end
 
-    #default vhost
-    describe file($defaultsiteconf) do
-      it { should be_file }
-      its(:content) { should match 'DocumentRoot /var/www/void' }
-    end
-
-    #test vhost - /etc/httpd/conf.d/sites/00-et2blog-80.conf
-    describe file($et2blogconf) do
-      it { should be_file }
-      its(:content) { should match 'DocumentRoot /var/www/et2blog' }
-    end
-
-    #test vhost - /etc/httpd/conf.d/sites/00-et2blog-443.conf
-    describe file($et2blogconfssl) do
-      it { should be_file }
-      its(:content) { should match 'DocumentRoot /var/www/et2blog' }
-      its(:content) { should match 'SSLEngine on' }
-    end
-
     it "curl HTTP 200 SSL et2blog" do
       expect(shell("curl -I https://localhost/check.rspec --insecure").exit_code).to be_zero
     end
