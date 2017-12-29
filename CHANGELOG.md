@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.14
+
+* added configurable ordering for proxypass and redirects
+
 ## 0.2.13
 
 * added **nginx::redirect**

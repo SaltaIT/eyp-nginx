@@ -5,6 +5,7 @@ define nginx::proxypass (
                           $servername         = $name,
                           $proxy_http_version = undef,
                           $port               = '80',
+                          $order_base         = '10',
                         ) {
 
   #fragment name
@@ -13,13 +14,13 @@ define nginx::proxypass (
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "10 - ${proxypass_url_clean}_${location_clean}-00",
+    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-00",
     content => template("${module_name}/vhost/proxy/proxypass.erb"),
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass end":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "10 - ${proxypass_url_clean}_${location_clean}-99",
+    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-99",
     content => "  }\n",
   }
 

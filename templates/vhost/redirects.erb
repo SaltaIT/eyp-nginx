@@ -4,4 +4,6 @@
   # <%= @description %>
   #
   <%- end -%>
-  rewrite <%= @match %> <%= @url %> <% if @permanent %>permanent<% else %>redirect<% end %>;
+  location <%= @location %> {
+    rewrite <%= @match %> <%= @url %> <% if @permanent %>permanent<% else %>redirect<% end %>;
+  }
