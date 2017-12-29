@@ -42,7 +42,7 @@ describe 'nginx class' do
       it { should be_listening }
     end
 
-    describe package($package) do
+    describe package($packagename) do
       it { is_expected.to be_installed }
     end
 

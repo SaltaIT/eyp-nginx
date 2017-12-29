@@ -71,6 +71,10 @@ describe 'nginx class' do
       it { should be_listening }
     end
 
+    describe package($packagename) do
+      it { is_expected.to be_installed }
+    end
+
     describe service($servicename) do
       it { should be_enabled }
       it { is_expected.to be_running }
