@@ -1,6 +1,7 @@
 class nginx::params {
 
   $baseconf = '/etc/nginx'
+  $ssl_dir = '/etc/nginx/ssl'
   $sites_dir='/etc/nginx/sites-available'
   $sites_enabled_dir='/etc/nginx/sites-enabled'
   $conf_d_dir='/etc/nginx/conf.d'

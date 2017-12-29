@@ -86,11 +86,17 @@ class nginx (
     creates => $nginx::params::baseconf,
   }
 
+  exec { "mkdir_p_${nginx::params::ssl_dir}":
+    command => "mkdir -p ${nginx::params::ssl_dir}",
+    require => Package[$nginx::params::package],
+    creates => $nginx::params::ssl_dir,
+  }
+
   file { $nginx::params::baseconf:
     ensure  => 'directory',
     owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    group   => $nginx::params::username,
+    mode    => '0750',
     recurse => true,
     purge   => true,
     require => Exec["mkdir_p_${nginx::params::baseconf}"],
@@ -99,18 +105,28 @@ class nginx (
   file { $nginx::params::sites_enabled_dir:
     ensure  => 'directory',
     owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    group   => $nginx::params::username,
+    mode    => '0750',
     recurse => true,
     purge   => true,
     require => Exec["mkdir_p_${nginx::params::sites_enabled_dir}"],
   }
 
+  file { $nginx::params::ssl_dir:
+    ensure  => 'directory',
+    owner   => 'root',
+    group   => $nginx::params::username,
+    mode    => '0750',
+    recurse => true,
+    purge   => true,
+    require => Exec["mkdir_p_${nginx::params::ssl_dir}"],
+  }
+
   file { $nginx::params::sites_dir:
     ensure  => 'directory',
     owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    group   => $nginx::params::username,
+    mode    => '0750',
     recurse => true,
     purge   => true,
     require => Exec["mkdir_p_${nginx::params::sites_dir}"],
@@ -119,8 +135,8 @@ class nginx (
   file { $nginx::params::conf_d_dir:
     ensure  => 'directory',
     owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
+    group   => $nginx::params::username,
+    mode    => '0750',
     recurse => true,
     purge   => true,
     require => Exec["mkdir_p_${nginx::params::conf_d_dir}"],
