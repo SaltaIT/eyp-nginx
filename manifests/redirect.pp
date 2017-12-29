@@ -1,7 +1,6 @@
 # puppet2sitepp @nginxredirects
 define nginx::redirect (
                           $url,
-                          $match       = '^/(.*)$',
                           $location    = '/',
                           $vhost_order = '00',
                           $port        = '80',

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.15
+
+* changed rewrite directive to return on **nginx::redirect**
+
 ## 0.2.14
 
 * added configurable ordering for proxypass and redirects

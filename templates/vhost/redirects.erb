@@ -5,5 +5,5 @@
   #
   <%- end -%>
   location <%= @location %> {
-    rewrite <%= @match %> <%= @url %> <% if @permanent %>permanent<% else %>redirect<% end %>;
+    return <% if @permanent %>301<% else %>302<% end %> <%= @url %>;
   }
