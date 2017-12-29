@@ -143,12 +143,12 @@ class nginx (
   }
 
   file { "${nginx::params::baseconf}/mime.types":
-  ensure  => 'present',
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0755',
-  content => file("${module_name}/mime.types"),
-}
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => file("${module_name}/mime.types"),
+  }
 
   if($add_default_vhost)
   {
