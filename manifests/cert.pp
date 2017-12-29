@@ -23,7 +23,7 @@ define nginx::cert (
 
   if($pk_source!=undef)
   {
-    file { "${nginx::params::baseconf}/ssl/${certname}_pk${version}.pk":
+    file { "${nginx::params::ssl_dir}/${certname}_pk${version}.pk":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
@@ -35,7 +35,7 @@ define nginx::cert (
   }
   else
   {
-    file { "${apache::params::baseconf}/ssl/${certname}_pk${version}.pk":
+    file { "${apache::params::ssl_dir}/${certname}_pk${version}.pk":
       ensure => 'link',
       target => $pk_file,
       notify => Class['::nginx::service'],
@@ -45,7 +45,7 @@ define nginx::cert (
 
   if($cert_source!=undef)
   {
-    file { "${apache::params::baseconf}/ssl/${certname}_cert${version}.cert":
+    file { "${apache::params::ssl_dir}/${certname}_cert${version}.cert":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
@@ -57,7 +57,7 @@ define nginx::cert (
   }
   else
   {
-    file { "${apache::params::baseconf}/ssl/${certname}_cert${version}.cert":
+    file { "${apache::params::ssl_dir}/${certname}_cert${version}.cert":
       ensure => 'link',
       target => $cert_file,
       notify => Class['::nginx::service'],
@@ -68,7 +68,7 @@ define nginx::cert (
   if($intermediate_source!=undef)
   {
 
-    file { "${apache::params::baseconf}/ssl/${certname}_intermediate${version}.cert":
+    file { "${apache::params::ssl_dir}/${certname}_intermediate${version}.cert":
       ensure  => 'present',
       owner   => 'root',
       group   => 'root',
