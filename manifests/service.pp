@@ -5,7 +5,7 @@ class nginx::service() inherits nginx {
   $is_docker_container=str2bool($is_docker_container_var)
 
   if( $is_docker_container==false or
-      $manage_docker_service)
+      $nginx::manage_docker_service)
   {
     if($nginx::manage_service)
     {
