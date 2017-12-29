@@ -71,10 +71,12 @@ define nginx::vhost (
   }
 
   if($certname!=undef)
-  concat::fragment{ "${nginx::params::sites_dir}/${servername} ssl ${certname}":
-    target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => '03',
-    content => template("${module_name}/vhost/ssl.erb"),
+  {
+    concat::fragment{ "${nginx::params::sites_dir}/${servername} ssl ${certname}":
+      target  => "${nginx::params::sites_dir}/${port}_${servername}",
+      order   => '03',
+      content => template("${module_name}/vhost/ssl.erb"),
+    }
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${servername} fi vhost":
