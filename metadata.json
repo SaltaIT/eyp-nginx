@@ -1,12 +1,12 @@
 {
   "name": "eyp-nginx",
-  "version": "0.2.7",
+  "version": "0.2.16",
   "author": "eyp",
   "summary": "basic nginx module",
   "license": "Apache-2.0",
-  "source": "",
-  "project_page": null,
-  "issues_url": null,
+  "source": "https://github.com/NTTCom-MS/eyp-nginx",
+  "project_page": "https://github.com/NTTCom-MS/eyp-nginx",
+  "issues_url": "https://github.com/NTTCom-MS/eyp-nginx/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 3.0.0"},
@@ -21,6 +21,12 @@
     {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [ "14.04", "16.04" ]
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.8.0"
     }
   ]
 }

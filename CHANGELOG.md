@@ -1,5 +1,34 @@
 # CHANGELOG
 
+## 0.2.16
+
+* added option to randomly generate **ssl_dhparams**
+
+## 0.2.15
+
+* changed rewrite directive to return on **nginx::redirect**
+
+## 0.2.14
+
+* added configurable ordering for proxypass and redirects
+
+## 0.2.13
+
+* added **nginx::redirect**
+
+## 0.2.12
+
+* bugfix **nginx::proxyredirect**
+
+## 0.2.9
+
+* added **nginx::proxyredirect**
+* SSL support
+
+## 0.2.8
+
+* added **listen_address** to **nginx::vhost**
+
 ## 0.2.7
 
 * added charset option to **nginx::vhost**

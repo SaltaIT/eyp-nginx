@@ -1,3 +1,4 @@
+# puppet2sitepp @nginxstubstatus
 define nginx::stubstatus (
                           $stubstatus_url = '/server-status',
                           $servername     = $name,

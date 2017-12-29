@@ -8,7 +8,6 @@ define nginx::try_files (
                           $port       = '80',
                           $servername = $name,
                         ) {
-  validate_array($try)
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} try_files":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",

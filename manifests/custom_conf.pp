@@ -13,7 +13,7 @@ define nginx::custom_conf(
     group   => 'root',
     mode    => '0644',
     require => Class['nginx'],
-    notify  => Class['nginx'],
+    notify  => Class['::nginx::service'],
     source  => $source,
     replace => $replace,
   }

@@ -23,6 +23,7 @@ define nginx::upstream(
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
+    notify  => Class['::nginx::service'],
     content => template("${module_name}/upstream.erb"),
   }
 

@@ -1,0 +1,14 @@
+
+<% if @redirect -%>
+  <%- if defined?(@redirect_from) -%>
+    <%- if defined?(@redirect_to) -%>
+    proxy_redirect <%= @redirect_from %> <%= @redirect_to %>;
+    <%- else -%>
+    proxy_redirect default;
+    <%- end -%>
+  <%- else -%>
+    proxy_redirect default;
+  <%- end -%>
+<% else -%>
+    proxy_redirect off;
+<% end -%>

@@ -1,0 +1,9 @@
+
+  <%- if defined?(@description) -%>
+  #
+  # <%= @description %>
+  #
+  <%- end -%>
+  location <%= @location %> {
+    return <% if @permanent %>301<% else %>302<% end %> <%= @url %>;
+  }
