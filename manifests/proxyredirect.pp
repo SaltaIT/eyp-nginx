@@ -10,7 +10,7 @@ define nginx::proxyredirect (
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxyredirect ${redirect} ${redirect_from_clean} ${redirect_to_clean}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "10 - redirect ${redirect} ${redirect_from_clean} ${redirect_to_clean} - 02",
+    order   => "10_redirect__${redirect_from_clean}__${redirect_to_clean}__02",
     content => template("${module_name}/vhost/proxy/proxyredirect.erb"),
   }
 }
