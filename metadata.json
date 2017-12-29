@@ -1,6 +1,6 @@
 {
   "name": "eyp-nginx",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "author": "eyp",
   "summary": "basic nginx module",
   "license": "Apache-2.0",
