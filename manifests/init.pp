@@ -142,6 +142,14 @@ class nginx (
     require => Exec["mkdir_p_${nginx::params::conf_d_dir}"],
   }
 
+  file { "${nginx::params::baseconf}/mime.types":
+  ensure  => 'present',
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0755',
+  content => file("${module_name}/mime.types"),
+}
+
   if($add_default_vhost)
   {
     file { "${nginx::params::sites_dir}/default":
