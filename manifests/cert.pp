@@ -1,13 +1,18 @@
+# SSL certificate chains
+#
+# Some browsers may complain about a certificate signed by a well-known certificate authority, while other browsers may accept the certificate without issues. This occurs because the issuing authority has signed the server certificate using an intermediate certificate that is not present in the certificate base of well-known trusted certificate authorities which is distributed with a particular browser. In this case the authority provides a bundle of chained certificates which should be concatenated to the signed server certificate. The server certificate must appear before the chained certificates in the combined file:
+#
+# $ cat www.example.com.crt bundle.crt > www.example.com.chained.crt
 
 define nginx::cert (
                       $pk_source           = undef,
                       $pk_file             = undef,
                       $cert_source         = undef,
                       $cert_file           = undef,
-                      $intermediate_source = undef,
                       $certname            = $name,
                       $version             = '',
                     ) {
+
 
   include ::nginx
 
@@ -61,21 +66,6 @@ define nginx::cert (
       ensure => 'link',
       target => $cert_file,
       notify => Class['::nginx::service'],
-    }
-  }
-
-
-  if($intermediate_source!=undef)
-  {
-
-    file { "${nginx::params::ssl_dir}/${certname}_intermediate${version}.cert":
-      ensure  => 'present',
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0644',
-      require => [ Package[$nginx::params::package], File[$nginx::params::ssl_dir] ],
-      source  => $intermediate_source,
-      notify  => Class['::nginx::service'],
     }
   }
 
