@@ -1,0 +1,7 @@
+
+  <%- if defined?(@description) -%>
+  #
+  # <%= @description %>
+  #
+  <%- end -%>
+  rewrite <%= @match %> <%= @url %> <% if @permanent %>permanent<% else %>redirect<% end %>;

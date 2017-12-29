@@ -4,6 +4,7 @@
 # 01 - try_files
 # 02 - location
 # 03 - ssl
+# 04 - redirect
 # 09 - stub status
 # 10 - proxypass
 # 99 - end vhost

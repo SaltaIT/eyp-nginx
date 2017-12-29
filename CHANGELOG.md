@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.13
+
+* added **nginx::redirect**
+
 ## 0.2.12
 
 * bugfix **nginx::proxyredirect**
