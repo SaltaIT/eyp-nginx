@@ -5,11 +5,14 @@ _operatingsystemrelease = fact('operatingsystemrelease').to_f
 
 case _osfamily
 when 'RedHat'
-  $package        = 'nginx'
+  $packagename = 'nginx'
+  $servicename = 'nginx'
 
 when 'Debian'
-  $package        = 'nginx-light'
+  $packagename = 'nginx-light'
+  $servicename = 'nginx'
 
 else
-  $package = '-_-'
+  $packagename = '-_-'
+  $servicename = 'nginx'
 end

@@ -3,6 +3,7 @@
 ## 0.2.9
 
 * added **nginx::proxyredirect**
+* SSL support
 
 ## 0.2.8
 
