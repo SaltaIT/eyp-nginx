@@ -2,3 +2,10 @@
   # SSL certs
   ssl_certificate     <%= scope.lookupvar('nginx::params::ssl_dir') %>/<%= @certname %>_cert<%= @certname_version %>.cert;
   ssl_certificate_key <%= scope.lookupvar('nginx::params::ssl_dir') %>/<%= @certname %>_pk<%= @certname_version %>.pk;
+
+  <%- if @ssl_protocols.any? -%>
+  ssl_protocols       <%= @ssl_protocols.join(' ') %>;
+  <%- end -%>
+  <%- if @ssl_ciphers.any? -%>
+  ssl_ciphers         <%= @ssl_ciphers.join(':') %>;
+  <%- end -%>

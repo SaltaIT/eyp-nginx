@@ -23,6 +23,8 @@ define nginx::vhost (
                       $listen_address   = undef,
                       $certname         = undef,
                       $certname_version = '',
+                      $ssl_protocols    = [ 'TLSv1', 'TLSv1.1', 'TLSv1.2' ],
+                      $ssl_ciphers      = [ 'HIGH', '!aNULL', '!MD5' ],
                     ) {
 
   include ::nginx
