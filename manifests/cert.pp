@@ -3,7 +3,7 @@
 # Some browsers may complain about a certificate signed by a well-known certificate authority, while other browsers may accept the certificate without issues. This occurs because the issuing authority has signed the server certificate using an intermediate certificate that is not present in the certificate base of well-known trusted certificate authorities which is distributed with a particular browser. In this case the authority provides a bundle of chained certificates which should be concatenated to the signed server certificate. The server certificate must appear before the chained certificates in the combined file:
 #
 # $ cat www.example.com.crt bundle.crt > www.example.com.chained.crt
-
+# puppet2sitepp @nginxcerts
 define nginx::cert (
                       $pk_source           = undef,
                       $pk_file             = undef,
