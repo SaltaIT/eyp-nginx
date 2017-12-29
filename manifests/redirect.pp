@@ -11,7 +11,7 @@ define nginx::redirect (
                         ) {
   include ::nginx
 
-  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} redirect ${match} ${url}":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} redirect ${location} ${url}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     content => template("${module_name}/vhost/redirects.erb"),
     order   => $order,
