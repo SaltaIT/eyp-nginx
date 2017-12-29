@@ -89,6 +89,7 @@ define nginx::vhost (
       exec { "dhparams ${certname} ${port} ${servername}":
         command => "openssl dhparam -out ${nginx::params::ssl_dir}/dhparam_${port}_${servername}.pem 2048",
         creates => "${nginx::params::ssl_dir}/dhparam_${port}_${servername}.pem",
+        timeout => 0,
         notify  => Class['::nginx::service'],
       }
     }
