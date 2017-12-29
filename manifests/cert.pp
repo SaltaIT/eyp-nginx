@@ -35,7 +35,6 @@ define nginx::cert (
   }
   else
   {
-    fail("${nginx::params::ssl_dir}/${certname}_pk${version}.pk")
     file { "${nginx::params::ssl_dir}/${certname}_pk${version}.pk":
       ensure => 'link',
       target => $pk_file,
