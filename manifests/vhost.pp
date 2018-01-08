@@ -92,6 +92,14 @@ define nginx::vhost (
         timeout => 0,
         notify  => Class['::nginx::service'],
       }
+
+      file { "${nginx::params::ssl_dir}/dhparam_${port}_${servername}.pem":
+        ensure  => 'present',
+        owner   => 'root',
+        group   => $nginx::params::username,
+        mode    => '0640',
+        require => Exec["dhparams ${certname} ${port} ${servername}"],
+      }
     }
   }
 

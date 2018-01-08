@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.17
+
+* bugfix ssl_dhparams generation
+
 ## 0.2.16
 
 * added option to randomly generate **ssl_dhparams**
