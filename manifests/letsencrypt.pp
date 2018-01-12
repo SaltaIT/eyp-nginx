@@ -23,6 +23,4 @@ define nginx::letsencrypt (
 
   # ssl_certificate     <%= scope.lookupvar('nginx::params::ssl_dir') %>/<%= @certname %>_cert<%= @certname_version %>.cert;
   # ssl_certificate_key <%= scope.lookupvar('nginx::params::ssl_dir') %>/<%= @certname %>_pk<%= @certname_version %>.pk;
-
-  
 }
