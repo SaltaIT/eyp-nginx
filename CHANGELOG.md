@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.18
+
+* letsencrypt support using **eyp-letsencrypt**
+
 ## 0.2.17
 
 * bugfix ssl_dhparams generation
