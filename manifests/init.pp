@@ -25,7 +25,7 @@ class nginx (
               $manage_docker_service      = true,
               $service_ensure             = 'running',
               $service_enable             = true,
-
+              $client_max_body_size       = undef,
             ) inherits nginx::params{
 
   validate_absolute_path($defaultdocroot)
