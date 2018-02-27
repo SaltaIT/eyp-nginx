@@ -23,6 +23,8 @@ define nginx::vhost (
                       $charset          = undef,
                       $listen_address   = undef,
                       $certname         = undef,
+                      $use_letsencrypt  = false,
+                      $letsencrypt_root = '/var/lib/letsencrypt',
                       $certname_version = '',
                       $ssl_protocols    = [ 'TLSv1', 'TLSv1.1', 'TLSv1.2' ],
                       $ssl_ciphers      = [ 'HIGH', '!aNULL', '!MD5' ],
@@ -76,6 +78,13 @@ define nginx::vhost (
 
   if($certname!=undef)
   {
+    if($use_letsencrypt)
+    {
+      nginx::letsencrypt { "letsencrypt ${servername} ${port}":
+        letsencrypt_root => $letsencrypt_root,
+      }
+    }
+
     concat::fragment{ "${nginx::params::sites_dir}/${servername} ssl ${certname}":
       target  => "${nginx::params::sites_dir}/${port}_${servername}",
       order   => '03',

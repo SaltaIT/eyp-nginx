@@ -1,4 +1,10 @@
 
   location <%= @location %> {
+    <%- if defined?(@root) -%>
+    root <%= @root %>;
+    <%- end -%>
+    <%- if defined?(@default_type) -%>
+    default_type "<%= @default_type %>";
+    <%- end -%>
     try_files <%= @try.join(' ') %>;
   }
