@@ -1,5 +1,6 @@
 require 'beaker-rspec'
 require 'beaker_spec_helper'
+require 'beaker/puppet_install_helper'
 
 include BeakerSpecHelper
 
