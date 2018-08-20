@@ -6,7 +6,6 @@
 2. [Module Description - What the module does and why it is useful](#module-description)
 3. [Setup - The basics of getting started with nginx](#setup)
     * [What nginx affects](#what-nginx-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with nginx](#beginning-with-nginx)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
@@ -15,36 +14,21 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+nginx configuration
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module installs and configures nginx. It can configure vhosts with and without SSL
 
 ## Setup
 
 ### What nginx affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
-
-### Setup Requirements
-
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+* Manages nginx package and installs EPEL repo via **eyp-epel** if appropriate
+* Manages nginx general configuration file and mime.types file
+* Manages sites, ssl and conf.d directories (deleting any non-managed files)
 
 ### Beginning with nginx
-
 
 nginx proxypass minimal configuration:
 
@@ -62,7 +46,7 @@ nginx::proxypass { 'example':
 
 ## Usage
 
-### nginx fordward proxy
+### nginx forward proxy
 
 ```puppet
 class { 'nginx':
@@ -92,16 +76,75 @@ nginxproxypass:
     proxypass_url: http://127.0.0.1:5601
 ```
 
+### ELK demo
+
+```
+classes:
+  - nginx
+nginx::add_default_vhost: false
+nginxvhosts:
+  default:
+    default: true
+nginxproxypass:
+  default:
+    proxypass_url: http://127.0.0.1:5601
+nginxstubstatus:
+  default:
+    stubstatus_url: '/nginx_status'
+```
+
+### vhost with SSL
+
+```
+---
+classes:
+  - nginx
+nginx::add_default_vhost: false
+nginx::client_max_body_size: 0
+nginxvhosts:
+  default:
+    port: 81
+    default: true
+  'demo.systemadmin.es':
+    port: 443
+    certname: 'demo_cert'
+nginxproxypass:
+  'demo.systemadmin.es':
+    port: 443
+    proxypass_url: 'http://127.0.0.1:7990'
+nginxstubstatus:
+  default:
+    port: 81
+    stubstatus_url: '/nginx_status'
+nginxcerts:
+  'demo_cert':
+    pk_file: '/etc/letsencrypt/live/demo.systemadmin.es/privkey.pem'
+    cert_file: '/etc/letsencrypt/live/demo.systemadmin.es/fullchain.pem'
+nginxproxyredirects:
+  'demo.systemadmin.es':
+    port: 443
+    redirect_from: 'http://127.0.0.1:7990/'
+    redirect_to: 'https://demo.systemadmin.es/'
+    proxypass_url: 'http://127.0.0.1:7990'
+nginxredirects:
+  'default':
+    port: 81
+    url: 'https://demo.systemadmin.es$request_uri'
+```
+
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+### classes
+
+#### nginx
+
+### resources
+
+#### nginx::vhost
 
 ## Limitations
 
-Tested on CentOS 6
+Mostly used as a proxy so as a result it does not have currently many options implemented
 
 ## Development
 
