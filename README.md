@@ -16,7 +16,7 @@
 
 ## Overview
 
-nginx configuration
+nginx management
 
 ## Module Description
 
@@ -30,6 +30,7 @@ This module installs and configures nginx. It can configure vhosts with and with
 * Manages nginx general configuration file and mime.types file
 * Manages sites, ssl and conf.d directories (deleting any non-managed files)
   - A raw configuration file can be still added via **nginx::custom_conf**
+
 
 ### Beginning with nginx
 
