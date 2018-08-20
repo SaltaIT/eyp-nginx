@@ -1,5 +1,7 @@
 # nginx
 
+**NTTCom-MS/eyp-nginx**: [![Build Status](https://travis-ci.org/NTTCom-MS/eyp-nginx.png?branch=master)](https://travis-ci.org/NTTCom-MS/eyp-nginx)
+
 #### Table of Contents
 
 1. [Overview](#overview)
