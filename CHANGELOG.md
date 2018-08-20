@@ -2,7 +2,6 @@
 
 ## 0.2.18
 
-* letsencrypt support using **eyp-letsencrypt**
 * added global **client_max_body_size**
 
 ## 0.2.17
