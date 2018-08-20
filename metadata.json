@@ -2,7 +2,7 @@
   "name": "eyp-nginx",
   "version": "0.2.18",
   "author": "eyp",
-  "summary": "basic nginx module",
+  "summary": "nginx management",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-nginx",
   "project_page": "https://github.com/NTTCom-MS/eyp-nginx",
