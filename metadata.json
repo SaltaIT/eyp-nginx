@@ -11,7 +11,6 @@
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 3.0.0"},
     {"name":"eyp/eyplib","version_requirement":">= 0.1.0 < 0.2.0"},
-    {"name":"eyp/letsencrypt","version_requirement":">= 0.1.0 < 0.2.0"},
     {"name":"eyp/logrotate","version_requirement":">= 0.1.35 < 0.2.0"}
   ],
   "operatingsystem_support": [
