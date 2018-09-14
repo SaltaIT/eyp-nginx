@@ -7,7 +7,7 @@ define nginx::htuser(
                     ) {
   include ::nginx
 
-  if($target=undef)
+  if($target==undef)
   {
     $target="/etc/nginx/${servername}.htpassword"
   }
