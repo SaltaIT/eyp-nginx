@@ -93,7 +93,7 @@ describe 'nginx class' do
 
     #/var/log/nginx/access_example.com.log
     it "logs nginx" do
-      expect(shell("cat /var/log/nginx/*_example.com.log").exit_code).to be_zero
+      expect(shell("cat /var/log/nginx/*.log").exit_code).to be_zero
     end
 
   end
