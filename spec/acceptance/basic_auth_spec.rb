@@ -81,21 +81,6 @@ describe 'nginx class' do
       its(:content) { should match 'jordi' }
     end
 
-    # | grep ^HTT | grep -i '403 Forbidden' > /dev/null
-    it "403 forbidden curl port 81 http://example.com" do
-      expect(shell("curl -Ix localhost:81 example.com/demo 2>/dev/null ").exit_code).to be_zero
-    end
-
-    # | grep ^HTT | grep -i '200 OK' > /dev/null
-    it "200 OK basic auth curl port 81 http://example.com" do
-      expect(shell("curl -Ix localhost:81 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
-    end
-
-    #/var/log/nginx/access_example.com.log
-    it "logs nginx" do
-      expect(shell("cat /var/log/nginx/*.log").exit_code).to be_zero
-    end
-
   end
 
 end
