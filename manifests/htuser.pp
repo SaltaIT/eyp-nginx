@@ -9,12 +9,16 @@ define nginx::htuser(
 
   if($target==undef)
   {
-    $target="/etc/nginx/${servername}.htpassword"
+    $real_target="/etc/nginx/${servername}.htpassword"
+  }
+  else
+  {
+    $real_target=$target
   }
 
-  if(!defined(Concat[$target]))
+  if(!defined(Concat[$real_target]))
   {
-    concat { $target:
+    concat { $real_target:
       ensure => 'present',
       owner  => 'root',
       group  => 'root',
@@ -23,8 +27,8 @@ define nginx::htuser(
     }
   }
 
-  concat::fragment { "globalconf header ${apache::params::baseconf}":
-    target  => $target,
+  concat::fragment { "${real_target} ${user} ${crypt} ${order}":
+    target  => $real_target,
     order   => $order,
     content => "${user}:${crypt}\n",
   }
