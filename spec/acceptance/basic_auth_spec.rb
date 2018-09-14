@@ -70,6 +70,17 @@ describe 'nginx class' do
       its(:content) { should match '# puppet managed file' }
     end
 
+
+    describe file("/etc/nginx/sites-enabled/81_example.com") do
+      it { should be_file }
+      its(:content) { should match 'auth_basic_user_file' }
+    end
+
+    describe file("/etc/nginx/example.com.htpassword") do
+      it { should be_file }
+      its(:content) { should match 'jordi' }
+    end
+
     # | grep ^HTT | grep -i '403 Forbidden' > /dev/null
     it "403 forbidden curl port 81 http://example.com" do
       expect(shell("curl -Ix localhost:81 example.com/demo 2>/dev/null ").exit_code).to be_zero
@@ -78,11 +89,6 @@ describe 'nginx class' do
     # | grep ^HTT | grep -i '200 OK' > /dev/null
     it "200 OK basic auth curl port 81 http://example.com" do
       expect(shell("curl -Ix localhost:81 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
-    end
-
-    describe file("/etc/nginx/sites-enabled/81_example.com") do
-      it { should be_file }
-      its(:content) { should match 'auth_basic_user_file' }
     end
 
   end
