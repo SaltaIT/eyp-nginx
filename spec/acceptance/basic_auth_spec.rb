@@ -57,12 +57,14 @@ describe 'nginx class' do
       its(:content) { should match '# puppet managed file' }
     end
 
+    # | grep ^HTT | grep -i '403 Forbidden' > /dev/null
     it "403 forbidden curl port 80 http://example.com" do
-      expect(shell("curl -Ix localhost:80 example.com/demo 2>/dev/null | grep ^HTT | grep -i '403 Forbidden' > /dev/null").exit_code).to be_zero
+      expect(shell("curl -Ix localhost:80 example.com/demo 2>/dev/null ").exit_code).to be_zero
     end
 
+    # | grep ^HTT | grep -i '200 OK' > /dev/null
     it "200 OK basic auth curl port 80 http://example.com" do
-      expect(shell("curl -Ix localhost:80 example.com/demo -u jordi:demo 2>/dev/null | grep ^HTT | grep -i '200 OK' > /dev/null").exit_code).to be_zero
+      expect(shell("curl -Ix localhost:80 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
     end
 
   end
