@@ -80,7 +80,7 @@ describe 'nginx class' do
       expect(shell("curl -Ix localhost:81 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
     end
 
-    describe file("/etc/nginx/sites-enabled/80_example.com") do
+    describe file("/etc/nginx/sites-enabled/81_example.com") do
       it { should be_file }
       its(:content) { should match 'auth_basic_user_file' }
     end
