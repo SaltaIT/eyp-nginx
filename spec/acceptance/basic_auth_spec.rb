@@ -13,6 +13,7 @@ describe 'nginx class' do
       }
 
       nginx::vhost { 'example.com':
+        port => 81,
       }
 
       ->
@@ -27,6 +28,7 @@ describe 'nginx class' do
 
       nginx::location { 'example.com':
         auth_basic => true,
+        port       => 81,
       }
 
       nginx::htuser { 'example.com':
@@ -69,13 +71,13 @@ describe 'nginx class' do
     end
 
     # | grep ^HTT | grep -i '403 Forbidden' > /dev/null
-    it "403 forbidden curl port 80 http://example.com" do
-      expect(shell("curl -Ix localhost:80 example.com/demo 2>/dev/null ").exit_code).to be_zero
+    it "403 forbidden curl port 81 http://example.com" do
+      expect(shell("curl -Ix localhost:81 example.com/demo 2>/dev/null ").exit_code).to be_zero
     end
 
     # | grep ^HTT | grep -i '200 OK' > /dev/null
-    it "200 OK basic auth curl port 80 http://example.com" do
-      expect(shell("curl -Ix localhost:80 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
+    it "200 OK basic auth curl port 81 http://example.com" do
+      expect(shell("curl -Ix localhost:81 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
     end
 
     describe file("/etc/nginx/sites-enabled/80_example.com") do
