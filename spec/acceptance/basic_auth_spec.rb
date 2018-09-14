@@ -9,6 +9,7 @@ describe 'nginx class' do
       pp = <<-EOF
 
       class { 'nginx':
+        add_default_vhost => false,
       }
 
       nginx::vhost { 'example.com':
@@ -45,7 +46,7 @@ describe 'nginx class' do
     end
 
     it "nginx configtest" do
-      expect(shell("nginx -t").exit_code).to be_zero
+      expect(shell("nginx -T").exit_code).to be_zero
     end
 
     describe port(80) do
