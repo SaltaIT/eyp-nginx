@@ -26,11 +26,27 @@ define nginx::location (
                           $description             = undef,
                           $fastcgi_split_path_info = undef,
                           $fastcgi_pass            = undef,
+                          $auth_basic              = false,
+                          $auth_basic_user_file    = undef,
+                          $auth_basic_banner       = 'Restricted Area',
+                          $satisfy                 = undef,
                         ) {
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} location":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => '02',
     content => template("${module_name}/vhost/location.erb"),
+  }
+
+  if($auth_basic)
+  {
+    if($auth_basic_user_file==undef)
+    {
+      $auth_basic_target="/etc/nginx/${servername}.htpassword"
+    }
+    else
+    {
+      $auth_basic_target=$auth_basic_user_file
+    }
   }
 }

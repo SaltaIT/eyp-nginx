@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.19
+
+* Added **auth_basic** support to **nginx::location**
+
 ## 0.2.18
 
 * added global **client_max_body_size**

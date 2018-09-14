@@ -5,6 +5,13 @@
   #
   <%- end -%>
   location <%= @location_match %> <%= @location %> {
+    <%- if @auth_basic -%>
+    auth_basic "<%= @auth_basic_banner %>";
+    auth_basic_user_file <%= @auth_basic_target %>;
+      <%- if defined?(@satisfy) -%>
+    satisfy <%= @satisfy %>
+      <%- end -%>
+    <%- end -%>
     <%- if defined?(@fastcgi_split_path_info) -%>
     fastcgi_split_path_info <%= @fastcgi_split_path_info %>;
     <%- end -%>
