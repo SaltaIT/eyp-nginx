@@ -19,10 +19,10 @@ define nginx::htuser(
   if(!defined(Concat[$real_target]))
   {
     concat { $real_target:
-      ensure => 'present',
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0644',
+      ensure  => 'present',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644',
       require => Class['::nginx'],
     }
   }
