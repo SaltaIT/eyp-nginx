@@ -9,7 +9,7 @@ define nginx::htuser(
 
   if($target==undef)
   {
-    $real_target="/etc/nginx/${servername}.htpassword"
+    $real_target="/etc/nginx/${servername}.htpasswd"
   }
   else
   {

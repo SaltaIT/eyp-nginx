@@ -76,7 +76,7 @@ describe 'nginx class' do
       its(:content) { should match 'auth_basic_user_file' }
     end
 
-    describe file("/etc/nginx/example.com.htpassword") do
+    describe file("/etc/nginx/example.com.htpasswd") do
       it { should be_file }
       its(:content) { should match 'jordi' }
     end

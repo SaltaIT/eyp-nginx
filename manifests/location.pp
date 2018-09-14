@@ -34,7 +34,7 @@ define nginx::location (
 
   if($auth_basic_user_file==undef)
   {
-    $auth_basic_target="/etc/nginx/${servername}.htpassword"
+    $auth_basic_target="/etc/nginx/${servername}.htpasswd"
   }
   else
   {
