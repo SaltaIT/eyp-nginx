@@ -14,6 +14,16 @@ describe 'nginx class' do
       nginx::vhost { 'example.com':
       }
 
+      ->
+
+      file { '/var/www/example.com/demo':
+        ensure  => 'present',
+        owner   => 'root',
+        group   => 'root',
+        mode    => '0644',
+        content => 'demo\n',
+      }
+
       nginx::location { 'example.com':
         auth_basic => true,
       }
