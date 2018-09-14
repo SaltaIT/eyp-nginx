@@ -1,10 +1,16 @@
 define nginx::htuser(
                       $user,
                       $crypt,
-                      $target = "/etc/nginx/${name}.htpassword",
-                      $order  = '42',
+                      $servername = $name,
+                      $target     = undef,
+                      $order      = '42',
                     ) {
   include ::nginx
+
+  if($target=undef)
+  {
+    $target="/etc/nginx/${servername}.htpassword"
+  }
 
   if(!defined(Concat[$target]))
   {
