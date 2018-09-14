@@ -32,12 +32,6 @@ define nginx::location (
                           $satisfy                 = undef,
                         ) {
 
-  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} location":
-    target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => '02',
-    content => template("${module_name}/vhost/location.erb"),
-  }
-
   if($auth_basic_user_file==undef)
   {
     $auth_basic_target="/etc/nginx/${servername}.htpassword"
@@ -45,5 +39,11 @@ define nginx::location (
   else
   {
     $auth_basic_target=$auth_basic_user_file
+  }
+
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} ${location} location":
+    target  => "${nginx::params::sites_dir}/${port}_${servername}",
+    order   => '02',
+    content => template("${module_name}/vhost/location.erb"),
   }
 }
