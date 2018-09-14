@@ -51,7 +51,7 @@ describe 'nginx class' do
       expect(shell("nginx -T").exit_code).to be_zero
     end
 
-    describe port(80) do
+    describe port(81) do
       it { should be_listening }
     end
 
