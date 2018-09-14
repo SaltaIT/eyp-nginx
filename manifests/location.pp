@@ -38,15 +38,12 @@ define nginx::location (
     content => template("${module_name}/vhost/location.erb"),
   }
 
-  if($auth_basic)
+  if($auth_basic_user_file==undef)
   {
-    if($auth_basic_user_file==undef)
-    {
-      $auth_basic_target="/etc/nginx/${servername}.htpassword"
-    }
-    else
-    {
-      $auth_basic_target=$auth_basic_user_file
-    }
+    $auth_basic_target="/etc/nginx/${servername}.htpassword"
+  }
+  else
+  {
+    $auth_basic_target=$auth_basic_user_file
   }
 }
