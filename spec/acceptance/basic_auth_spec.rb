@@ -91,6 +91,11 @@ describe 'nginx class' do
       expect(shell("curl -Ix localhost:81 example.com/demo -u jordi:demo 2>/dev/null ").exit_code).to be_zero
     end
 
+    #/var/log/nginx/access_example.com.log
+    it "logs nginx" do
+      expect(shell("cat /var/log/nginx/*_example.com.log").exit_code).to be_zero
+    end
+
   end
 
 end
