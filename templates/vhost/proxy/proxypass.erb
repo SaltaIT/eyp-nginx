@@ -1,5 +1,12 @@
 
   location <%= @location %> {
+    <%- if @auth_basic -%>
+    auth_basic "<%= @auth_basic_banner %>";
+    auth_basic_user_file <%= @auth_basic_target %>;
+      <%- if defined?(@satisfy) -%>
+    satisfy <%= @satisfy %>
+      <%- end -%>
+    <%- end -%>
     proxy_pass <%= @proxypass_url %>;
 <% if defined?(@proxy_http_version) -%>
     proxy_http_version <%= @proxy_http_version %>;

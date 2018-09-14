@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 0.2.20
+
+* Added **auth_basic** support to **nginx::proxypass**
+
+
 ## 0.2.19
 
 * Added **auth_basic** support to **nginx::location**
