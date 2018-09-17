@@ -48,7 +48,7 @@ describe 'nginx class' do
     end
 
     it "nginx configtest" do
-      expect(shell("nginx -T").exit_code).to be_zero
+      expect(shell("nginx -t").exit_code).to be_zero
     end
 
     describe port(81) do
