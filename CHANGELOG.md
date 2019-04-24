@@ -1,9 +1,13 @@
 # CHANGELOG
 
+## 0.2.21
+
+* Added **alias** to **nginx::location**
+* Added Ubuntu 18.04 support
+
 ## 0.2.20
 
 * Added **auth_basic** support to **nginx::proxypass**
-
 
 ## 0.2.19
 

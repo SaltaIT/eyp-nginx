@@ -45,7 +45,7 @@ class nginx::params {
         {
           case $::operatingsystemrelease
           {
-            /^1[46].*$/:
+            /^1[468].*$/:
             {
               $purge_default_vhost=undef
               $package='nginx-light'
