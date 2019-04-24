@@ -2,7 +2,7 @@
 
 ## 0.2.21
 
-* Added **alias** to **nginx::location**
+* Added **alias_path** to **nginx::location**
 * Added Ubuntu 18.04 support
 
 ## 0.2.20

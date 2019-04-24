@@ -5,8 +5,8 @@
   #
   <%- end -%>
   location <%= @location_match %> <%= @location %> {
-    <%- if defined?(@alias) -%>
-    alias <%= @alias %>;
+    <%- if defined?(@alias_path) -%>
+    alias <%= @alias_path %>;
     <%- end -%>
     <%- if @auth_basic -%>
     auth_basic "<%= @auth_basic_banner %>";

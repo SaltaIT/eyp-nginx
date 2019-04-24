@@ -30,7 +30,7 @@ define nginx::location (
                           $auth_basic_user_file    = undef,
                           $auth_basic_banner       = 'Restricted Area',
                           $satisfy                 = undef,
-                          $alias                   = undef,
+                          $alias_path              = undef,
                         ) {
 
   if($auth_basic_user_file==undef)
