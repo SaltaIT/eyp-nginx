@@ -15,7 +15,7 @@ define nginx::proxycache(
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass cache ${bypass}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}_98",
+    order   => "${order_base}-proxypass-98",
     content => template("${module_name}/vhost/proxy/proxycache.erb"),
   }
 }

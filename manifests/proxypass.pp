@@ -25,15 +25,15 @@ define nginx::proxypass (
     $auth_basic_target=$auth_basic_user_file
   }
 
-  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass ${proxypass_url_clean} ${location_clean}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-00",
+    order   => "${order_base}-proxypass-00",
     content => template("${module_name}/vhost/proxy/proxypass.erb"),
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass end":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-99",
+    order   => "${order_base}-proxypass-99",
     content => "  }\n",
   }
 

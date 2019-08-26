@@ -13,7 +13,7 @@ define nginx::proxycachebypass(
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass header ${bypass}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-98",
+    order   => "${order_base}-proxypass-90",
     content => template("${module_name}/vhost/proxy/proxycachebypass.erb"),
   }
 }
