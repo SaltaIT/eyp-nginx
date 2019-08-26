@@ -24,14 +24,14 @@ describe 'nginx class' do
         content => 'demo\n',
       }
 
-      nginx::proxypass { 'systemadmin.es':
+      nginx::proxypass { 'systemadmin.es loc 1':
         port          => '81',
         proxypass_url => 'http://1.1.1.1:8080',
         location      => '/location1',
         servername    => 'systemadmin.es',
       }
 
-      nginx::proxycache { 'systemadmin.es cache 2':
+      nginx::proxycache { 'systemadmin.es cache 1':
         port          => '81',
         location      => '/location1',
         servername    => 'systemadmin.es',
