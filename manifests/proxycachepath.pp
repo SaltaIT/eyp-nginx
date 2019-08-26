@@ -10,6 +10,7 @@ define nginx::proxycachepath(
   {
     exec { "mkdir -p proxycachepath ${path}":
       command => "mkdir -p ${path}",
+      path    => '/usr/sbin:/usr/bin:/sbin:/bin',
       creates => $path,
     }
 
