@@ -9,7 +9,6 @@ define nginx::proxycache(
                           $bypass     = [],
                         ) {
   #fragment name
-  $proxypass_url_clean = regsubst($proxypass_url, '[^a-zA-Z]+', '_')
   $location_clean = regsubst($location, '[^a-zA-Z]+', '_')
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass cache ${bypass}":
