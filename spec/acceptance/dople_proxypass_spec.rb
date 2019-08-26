@@ -32,9 +32,9 @@ describe 'nginx class' do
       }
 
       nginx::proxycache { 'systemadmin.es cache 1':
-        port          => '81',
-        location      => '/location1',
-        servername    => 'systemadmin.es',
+        port       => '81',
+        location   => '/location1',
+        servername => 'systemadmin.es',
       }
 
       nginx::proxypass { 'systemadmin.es loc 2':
@@ -45,9 +45,9 @@ describe 'nginx class' do
       }
 
       nginx::proxycache { 'systemadmin.es cache 2':
-        port          => '81',
-        location      => '/location2',
-        servername    => 'systemadmin.es',
+        port       => '81',
+        location   => '/location2',
+        servername => 'systemadmin.es',
       }
 
       EOF
