@@ -12,7 +12,7 @@ define nginx::proxycache(
   #fragment name
   $location_clean = regsubst($location, '[^a-zA-Z]+', '_')
 
-  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass cache ${bypass}":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass cache ${location_clean}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => "${order_base}-proxypass-${location_clean}-98",
     content => template("${module_name}/vhost/proxy/proxycache.erb"),
