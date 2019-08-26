@@ -3,7 +3,7 @@ define nginx::proxycachepath(
                               $path,
                               $proxycache_name = $name,
                               $description     = undef,
-                              $order           = '42'.
+                              $order           = '42',
                             ) {
 
   if(!defined(File[$path]))
