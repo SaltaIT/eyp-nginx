@@ -1,5 +1,4 @@
 define nginx::proxycache(
-                          $proxypass_url,
                           $location   = '/',
                           $servername = $name,
                           $port       = '80',
