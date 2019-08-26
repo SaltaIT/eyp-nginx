@@ -4,7 +4,9 @@
     <%- @valid.each do |key, val| -%>
     proxy_cache_valid 	<%= key %> <%= val %>;
     <%- end -%>
+    <%- if @bypass.any? -%>
     <%- @bypass.each do |val| -%>
     proxy_cache_bypass 	<%= val %>;
+    <%- end -%>
     <%- end -%>
     proxy_cache_use_stale <%= @use_stale %>;
