@@ -1,3 +1,4 @@
+# puppet managed file
 server {
   listen <% if defined?(@listen_address) %><%= @listen_address %>:<% end %><%= @port %><% if @default %> default_server<% end %><% if defined?(@certname) %> ssl<% end %>;
 
