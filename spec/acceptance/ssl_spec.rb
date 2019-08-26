@@ -3,7 +3,7 @@ require_relative './version.rb'
 
 describe 'nginx class' do
 
-  context 'basic SSL setup' do
+  context 'SSL setup' do
     # Using puppet_apply as a helper
     it 'should work with no errors' do
       pp = <<-EOF
