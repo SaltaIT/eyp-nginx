@@ -1,23 +1,23 @@
-	  #   if ($http_cookie ~* "wordpress_logged_in_[^=]*=([^%]+)%7C")
-	  #   {
-    #             set $cookie_wordpress $1;
-    #         }
-    #
-	  #   if ($http_cookie ~* "comment_author_email_([0-9a-z]*)")
-	  #   {
-		# set $wpcookie_author_email $1;
-	  #   }
-    #
-	  #   if ( $request_uri ~* "/herramientas/traducir-mac-a-fabricante-del-equipo$" )
-	  #   #location /herramientas/traducir-mac-a-fabricante-del-equipo
-	  #   {
-		# set $wp_nocache 1;
-	  #   }
-    #
-	  #   if ( $request_uri ~* "/herramientas/calcular-el-tamano-maximo-de-memoria-de-mysql$" )
-	  #   {
-		# set $wp_nocache 1;
-	  #   }
+# if ($http_cookie ~* "wordpress_logged_in_[^=]*=([^%]+)%7C")
+# {
+# set $cookie_wordpress $1;
+# }
+#
+# if ($http_cookie ~* "comment_author_email_([0-9a-z]*)")
+# {
+# set $wpcookie_author_email $1;
+# }
+#
+# if ( $request_uri ~* "/herramientas/traducir-mac-a-fabricante-del-equipo$" )
+# #location /herramientas/traducir-mac-a-fabricante-del-equipo
+# {
+# set $wp_nocache 1;
+# }
+#
+# if ( $request_uri ~* "/herramientas/calcular-el-tamano-maximo-de-memoria-de-mysql$" )
+# {
+# set $wp_nocache 1;
+# }
 
 define nginx::proxycacherule(
                           $location   = '/',
