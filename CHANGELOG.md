@@ -2,7 +2,7 @@
 
 ## 0.2.22
 
-* added **nginx::proxycachebypass**
+* added **nginx::proxycachebypass** and **nginx::proxycachepath**
 
 ## 0.2.21
 

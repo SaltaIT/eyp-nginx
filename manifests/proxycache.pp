@@ -5,7 +5,7 @@ define nginx::proxycache(
                           $port            = '80',
                           $order_base      = '10',
                           $key             = '$scheme$host$proxy_host$uri$is_args$args',
-                          $valid           = { '200' => '10m', '302' => '10m', '304' => '10m', '301' => '1m', '502' => '1s', 'any' => '1m' },
+                          $valid           = { '200' => '60m', '302' => '10m', '304' => '10m', '301' => '1m', '502' => '1s', 'any' => '1m' },
                           $use_stale       = 'updating',
                           $bypass          = [],
                         ) {

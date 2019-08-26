@@ -140,6 +140,14 @@ class nginx (
     require => Exec["mkdir_p_${nginx::params::conf_d_dir}"],
   }
 
+  concat { "${nginx::params::conf_d_dir}/proxycachepaths.conf":
+    ensure  => 'present',
+    owner   => 'root',
+    group   => $nginx::params::username,
+    mode    => '0644',
+    require => File[$nginx::params::conf_d_dir],
+  }
+
   file { "${nginx::params::baseconf}/mime.types":
     ensure  => 'present',
     owner   => 'root',

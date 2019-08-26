@@ -37,6 +37,10 @@ describe 'nginx class' do
         servername => 'systemadmin.es',
       }
 
+      nginx::proxycachepath { 'systemadmin_es_cache_1':
+        path => '/var/www/cache/systemadmin_es_cache_1',
+      }
+
       nginx::proxypass { 'systemadmin.es loc 2':
         port          => '81',
         proxypass_url => 'http://2.2.2.2:8080',
@@ -48,6 +52,10 @@ describe 'nginx class' do
         port       => '81',
         location   => '/location2',
         servername => 'systemadmin.es',
+      }
+
+      nginx::proxycachepath { 'systemadmin_es_cache_2':
+        path => '/var/www/cache/systemadmin_es_cache_2',
       }
 
       EOF

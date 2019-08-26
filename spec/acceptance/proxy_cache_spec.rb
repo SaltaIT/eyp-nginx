@@ -24,6 +24,10 @@ describe 'nginx class' do
         content => 'demo\n',
       }
 
+      nginx::proxycachepath { 'systemadmin_es':
+        path => '/var/www/cache/systemadmin_es',
+      }
+
       nginx::proxypass { 'systemadmin.es':
         port          => '81',
         proxypass_url => 'http://1.1.1.1:8080',
