@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.22
+
+* added **nginx::proxycachebypass**
+
 ## 0.2.21
 
 * Added **alias_path** to **nginx::location**
