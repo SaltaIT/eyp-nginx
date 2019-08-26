@@ -148,7 +148,7 @@ class nginx (
     require => File[$nginx::params::conf_d_dir],
   }
 
-  concat::fragment{ "proxycache path ${path} ${proxycache_name}":
+  concat::fragment{ 'proxycache path header':
     target  => "${nginx::params::conf_d_dir}/proxycachepaths.conf",
     order   => '00',
     content => "# puppet managed file\n",
