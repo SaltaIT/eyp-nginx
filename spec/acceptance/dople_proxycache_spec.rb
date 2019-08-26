@@ -92,6 +92,11 @@ describe 'nginx class' do
       its(:content) { should match '# puppet managed file' }
     end
 
+    describe file("/etc/nginx/conf.d/proxycachepaths.conf") do
+      it { should be_file }
+      its(:content) { should match '# puppet managed file' }
+    end
+
     # /etc/nginx/sites-available
     describe file("/etc/nginx/sites-available/81_systemadmin.es") do
       it { should be_file }

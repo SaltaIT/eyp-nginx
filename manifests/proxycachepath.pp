@@ -25,7 +25,7 @@ define nginx::proxycachepath(
 
   concat::fragment{ "proxycache path ${path} ${proxycache_name}":
     target  => "${nginx::params::conf_d_dir}/proxycachepaths.conf",
-    order   => $order,
+    order   => "01-${order}",
     content => template("${module_name}/vhost/proxy/proxycachepath.erb"),
   }
 }

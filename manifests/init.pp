@@ -148,6 +148,12 @@ class nginx (
     require => File[$nginx::params::conf_d_dir],
   }
 
+  concat::fragment{ "proxycache path ${path} ${proxycache_name}":
+    target  => "${nginx::params::conf_d_dir}/proxycachepaths.conf",
+    order   => '00',
+    content => "# puppet managed file\n",
+  }
+
   file { "${nginx::params::baseconf}/mime.types":
     ensure  => 'present',
     owner   => 'root',
