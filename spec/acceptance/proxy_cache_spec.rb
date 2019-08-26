@@ -29,7 +29,7 @@ describe 'nginx class' do
         proxypass_url => 'http://backend.systemadmin.es:8080',
       }
 
-      nginx::proxycachebypass { 'systemadmin.es':
+      nginx::proxycache { 'systemadmin.es':
         port          => '81',
         proxypass_url => '/',
       }
