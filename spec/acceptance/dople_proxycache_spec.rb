@@ -3,7 +3,7 @@ require_relative './version.rb'
 
 describe 'nginx class' do
 
-  context 'double proxypass setup' do
+  context 'double proxycache setup' do
     # Using puppet_apply as a helper
     it 'should work with no errors' do
       pp = <<-EOF

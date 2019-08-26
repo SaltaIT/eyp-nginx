@@ -3,7 +3,7 @@ require_relative './version.rb'
 
 describe 'nginx class' do
 
-  context 'proxy pass setup' do
+  context 'proxycache setup' do
     # Using puppet_apply as a helper
     it 'should work with no errors' do
       pp = <<-EOF
@@ -27,11 +27,12 @@ describe 'nginx class' do
       nginx::proxypass { 'systemadmin.es':
         port          => '81',
         proxypass_url => 'http://1.1.1.1:8080',
+        location   => '/proxy',
       }
 
       nginx::proxycache { 'systemadmin.es':
         port       => '81',
-        location   => '/',
+        location   => '/proxy',
         servername => 'systemadmin.es',
       }
 
