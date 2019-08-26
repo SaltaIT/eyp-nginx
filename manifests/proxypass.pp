@@ -27,13 +27,13 @@ define nginx::proxypass (
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass ${proxypass_url_clean} ${location_clean}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base}-proxypass-00",
+    order   => "${order_base}-proxypass-${location_clean}-00",
     content => template("${module_name}/vhost/proxy/proxypass.erb"),
   }
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass end":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base}-proxypass-99",
+    order   => "${order_base}-proxypass-${location_clean}-99",
     content => "  }\n",
   }
 

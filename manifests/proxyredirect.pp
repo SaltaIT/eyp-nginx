@@ -15,7 +15,7 @@ define nginx::proxyredirect (
 
   concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxyredirect ${redirect} ${redirect_from_clean} ${redirect_to_clean}":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
-    order   => "${order_base} - ${proxypass_url_clean}_${location_clean}-01",
+    order   => "${order_base}-proxypass-${location_clean}-01",
     content => template("${module_name}/vhost/proxy/proxyredirect.erb"),
   }
 }
