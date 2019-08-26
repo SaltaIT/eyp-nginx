@@ -31,7 +31,7 @@ define nginx::proxypass (
     content => template("${module_name}/vhost/proxy/proxypass.erb"),
   }
 
-  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass end":
+  concat::fragment{ "${nginx::params::sites_dir}/${port}_${servername} proxypass ${proxypass_url_clean} ${location_clean} end":
     target  => "${nginx::params::sites_dir}/${port}_${servername}",
     order   => "${order_base}-proxypass-${location_clean}-99",
     content => "  }\n",
