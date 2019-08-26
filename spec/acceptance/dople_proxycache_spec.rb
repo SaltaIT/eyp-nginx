@@ -31,7 +31,7 @@ describe 'nginx class' do
         servername    => 'systemadmin.es',
       }
 
-      nginx::proxycache { 'systemadmin.es cache 1':
+      nginx::proxycache { 'systemadmin_es_cache_1':
         port       => '81',
         location   => '/location1',
         servername => 'systemadmin.es',
@@ -44,7 +44,7 @@ describe 'nginx class' do
         servername    => 'systemadmin.es',
       }
 
-      nginx::proxycache { 'systemadmin.es cache 2':
+      nginx::proxycache { 'systemadmin_es_cache_2':
         port       => '81',
         location   => '/location2',
         servername => 'systemadmin.es',
