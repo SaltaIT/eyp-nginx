@@ -31,7 +31,7 @@ describe 'nginx class' do
 
       nginx::proxycache { 'systemadmin.es':
         port          => '81',
-        proxypass_url => '/',
+        location      => '/',
       }
 
       EOF
