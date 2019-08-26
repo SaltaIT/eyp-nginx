@@ -28,9 +28,9 @@ class nginx (
               $client_max_body_size       = undef,
             ) inherits nginx::params{
 
-  validate_absolute_path($defaultdocroot)
-
-  validate_array($serverstatus_allowedips)
+  # validate_absolute_path($defaultdocroot)
+  #
+  # validate_array($serverstatus_allowedips)
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin'
