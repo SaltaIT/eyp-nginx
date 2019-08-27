@@ -34,10 +34,10 @@ describe 'nginx class' do
         location   => '/proxy',
       }
 
-      nginx::proxycache { 'systemadmin_es':
+      nginx::proxycache { 'systemadmin.es':
         port       => '81',
         location   => '/proxy',
-        servername => 'systemadmin.es',
+        cache_name => 'systemadmin_es',
       }
 
       EOF
