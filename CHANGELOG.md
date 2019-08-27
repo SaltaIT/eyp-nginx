@@ -1,8 +1,11 @@
 # CHANGELOG
 
+## 0.2.24
+
+* added fake **serveralias** for better vhost name management
+
 ## 0.2.23
 
-* allow vhost's servername to be an array
 * renamed options for **nginx::proxycachepath**
 
 ## 0.2.22
