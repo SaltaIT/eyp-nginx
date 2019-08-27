@@ -14,7 +14,7 @@
 define nginx::vhost (
                       $port             = '80',
                       $documentroot     = "/var/www/${name}",
-                      $servername       = $name,
+                      $servername       = [ $name ],
                       $directoryindex   = [ 'index.php', 'index.html', 'index.htm' ],
                       $enable           = true,
                       $default          = false,
