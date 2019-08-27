@@ -5,7 +5,11 @@ server {
   root <%= @documentroot %>;
   index <%= @directoryindex.join(' ') %>;
 
+  <% if @servername.kind_of?(Array) -%>
+  server_name <%= @servername.join(' ') %>;
+  <% else -%>
   server_name <%= @servername %>;
+  <% end -%>
 
   access_log <%= @access_log %>;
   error_log <%= @error_log %>;
