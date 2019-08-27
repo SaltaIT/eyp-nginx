@@ -1,6 +1,6 @@
 define nginx::proxycache(
-                          $servername,
-                          $proxycache_name = $name,
+                          $cache_name,
+                          $servername      = $name,
                           $location        = '/',
                           $port            = '80',
                           $order_base      = '10',
