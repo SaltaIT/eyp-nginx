@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.25
+
+* removed useless variables from **nginx::proxysetheader**
+
 ## 0.2.24
 
 * added fake **serveralias** for better vhost name management

@@ -1,6 +1,6 @@
 {
   "name": "eyp-nginx",
-  "version": "0.2.24",
+  "version": "0.2.25",
   "author": "eyp",
   "summary": "nginx management",
   "license": "Apache-2.0",
