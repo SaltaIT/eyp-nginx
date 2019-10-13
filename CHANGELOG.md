@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.26
+
+* added cleanup cron for proxy_cache
+
 ## 0.2.25
 
 * removed useless variables from **nginx::proxysetheader**
