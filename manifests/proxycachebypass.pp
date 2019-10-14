@@ -1,4 +1,4 @@
-# DEPRECATED
+# included in nginx::proxycache as an array
 define nginx::proxycachebypass(
                               $proxypass_url,
                               $bypass,
