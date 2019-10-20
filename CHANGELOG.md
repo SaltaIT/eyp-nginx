@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.2.27
+
+* added support for **proxy_ignore_headers** using **nginx::proxyignoreheader**
+
 ## 0.2.26
 
 * added cleanup cron for proxy_cache
