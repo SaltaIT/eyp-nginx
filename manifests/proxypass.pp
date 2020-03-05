@@ -1,15 +1,24 @@
 # puppet2sitepp @nginxproxypass
 define nginx::proxypass (
                           $proxypass_url,
-                          $location             = '/',
-                          $servername           = $name,
-                          $proxy_http_version   = undef,
-                          $port                 = '80',
-                          $order_base           = '10',
-                          $auth_basic           = false,
-                          $auth_basic_user_file = undef,
-                          $auth_basic_banner    = 'Restricted Area',
-                          $satisfy              = undef,
+                          $location               = '/',
+                          $servername             = $name,
+                          $proxy_http_version     = undef,
+                          $port                   = '80',
+                          $order_base             = '10',
+                          $auth_basic             = false,
+                          $auth_basic_user_file   = undef,
+                          $auth_basic_banner      = 'Restricted Area',
+                          $satisfy                = undef,
+                          $health_check           = false,
+                          $health_check_uri       = undef,
+                          $health_check_interval  = undef,
+                          $health_check_jitter    = undef,
+                          $health_check_fails     = undef,
+                          $health_check_passes    = undef,
+                          $health_check_match     = undef,
+                          $health_check_port      = undef,
+                          $health_check_mandatory = undef,
                         ) {
 
   #fragment name

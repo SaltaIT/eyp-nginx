@@ -11,3 +11,15 @@
 <% if defined?(@proxy_http_version) -%>
     proxy_http_version <%= @proxy_http_version %>;
 <% end -%>
+<% if @health_check -%>
+    health_check <% -%>
+<% if defined(@uri) %>uri=<%= @uri %> <% end -%>
+<% if defined(@interval) %>interval=<%= @interval %> <% end -%>
+<% if defined(@jitter) %>jitter=<%= @jitter %> <% end -%>
+<% if defined(@fails) %>fails=<%= @fails %> <% end -%>
+<% if defined(@passes) %>passes=<%= @passes %> <% end -%>
+<% if defined(@match) %>match=<%= @match %> <% end -%>
+<% if defined(@port) %>port=<%= @port %> <% end -%>
+<% if @mandatory %>mandatory <% end -%>
+;
+<% end -%>
