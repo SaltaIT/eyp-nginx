@@ -1,3 +1,5 @@
+# ONLY for commercial subscription
+
 class { 'nginx':
   default_vhost_port => '81'
 }
