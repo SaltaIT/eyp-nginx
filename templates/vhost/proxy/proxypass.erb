@@ -13,13 +13,13 @@
 <% end -%>
 <% if @health_check -%>
     health_check <% -%>
-<% if defined?(@uri) %>uri=<%= @uri %> <% end -%>
-<% if defined?(@interval) %>interval=<%= @interval %> <% end -%>
-<% if defined?(@jitter) %>jitter=<%= @jitter %> <% end -%>
-<% if defined?(@fails) %>fails=<%= @fails %> <% end -%>
-<% if defined?(@passes) %>passes=<%= @passes %> <% end -%>
-<% if defined?(@match) %>match=<%= @match %> <% end -%>
-<% if defined?(@port) %>port=<%= @port %> <% end -%>
-<% if @mandatory %>mandatory <% end -%>
+<% if defined?(@health_check_uri) %>uri=<%= @health_check_uri %> <% end -%>
+<% if defined?(@health_check_interval) %>interval=<%= @health_check_interval %> <% end -%>
+<% if defined?(@health_check_jitter) %>jitter=<%= @health_check_jitter %> <% end -%>
+<% if defined?(@health_check_fails) %>fails=<%= @health_check_fails %> <% end -%>
+<% if defined?(@health_check_passes) %>passes=<%= @health_check_passes %> <% end -%>
+<% if defined?(@health_check_match) %>match=<%= @health_check_match %> <% end -%>
+<% if defined?(@health_check_port) %>port=<%= @health_check_port %> <% end -%>
+<% if @health_check_mandatory %>mandatory <% end -%>
 ;
 <% end -%>
