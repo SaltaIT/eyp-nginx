@@ -10,13 +10,11 @@
 #   keepalive 2;
 # }
 define nginx::upstream(
-                        $server,
+                        $server        = [],
                         $upstream_name = $name,
                         $keepalive     = undef,
                         $description   = undef,
                       ) {
-
-  validate_array($server)
 
   file { "${nginx::params::conf_d_dir}/upstream_${upstream_name}.conf":
     ensure  => 'present',

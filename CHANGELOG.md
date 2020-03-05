@@ -3,6 +3,7 @@
 ## 0.2.27
 
 * added support for **proxy_ignore_headers** using **nginx::proxyignoreheader**
+* added health_check option to proxypass
 
 ## 0.2.26
 
