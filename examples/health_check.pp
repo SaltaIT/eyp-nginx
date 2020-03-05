@@ -1,4 +1,5 @@
 # ONLY for commercial subscription
+# http://nginx.org/en/docs/http/ngx_http_upstream_hc_module.html
 
 class { 'nginx':
   default_vhost_port => '81'
