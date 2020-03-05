@@ -26,6 +26,7 @@ class nginx (
               $service_ensure             = 'running',
               $service_enable             = true,
               $client_max_body_size       = undef,
+              $nginx_plus                 = false,
             ) inherits nginx::params{
 
   # validate_absolute_path($defaultdocroot)
@@ -41,7 +42,17 @@ class nginx (
     include epel
   }
 
-  package { $nginx::params::package:
+  if($nginx_plus)
+  {
+    #TODO repo info
+    $package_nginx = $nginx::params::package_plus
+  }
+  else
+  {
+    $package_nginx = $nginx::params::package
+  }
+
+  package { $package_nginx:
     ensure  => 'installed',
     require => $nginx::params::require_epel,
   }
@@ -51,7 +62,7 @@ class nginx (
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    require => Package[$nginx::params::package],
+    require => Package[$package_nginx],
     notify  => Service['nginx'],
     content => template("${module_name}/nginx.erb")
   }
@@ -82,13 +93,13 @@ class nginx (
 
   exec { "mkdir_p_${nginx::params::baseconf}":
     command => "mkdir -p ${nginx::params::baseconf}",
-    require => Package[$nginx::params::package],
+    require => Package[$package_nginx],
     creates => $nginx::params::baseconf,
   }
 
   exec { "mkdir_p_${nginx::params::ssl_dir}":
     command => "mkdir -p ${nginx::params::ssl_dir}",
-    require => Package[$nginx::params::package],
+    require => Package[$package_nginx],
     creates => $nginx::params::ssl_dir,
   }
 
@@ -190,7 +201,7 @@ class nginx (
   {
     file { $nginx::params::purge_default_vhost:
       ensure  => 'absent',
-      require => Package[$nginx::params::package],
+      require => Package[$package_nginx],
       notify  => Service['nginx'],
     }
   }
@@ -202,7 +213,7 @@ class nginx (
     mode    => '0644',
     content => template("${module_name}/fcgi/fastcgi_params.erb"),
     notify  => Service['nginx'],
-    require => Package[$nginx::params::package],
+    require => Package[$package_nginx],
   }
 
   class { 'nginx::service':

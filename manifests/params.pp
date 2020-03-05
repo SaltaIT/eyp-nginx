@@ -19,6 +19,8 @@ class nginx::params {
     'text/javascript'
   ]
 
+  $package_plus = 'nginx-plus'
+
   case $::osfamily
   {
     'redhat':
@@ -39,6 +41,7 @@ class nginx::params {
     }
     'Debian':
     {
+      $package='nginx-light'
       case $::operatingsystem
       {
         'Ubuntu':
@@ -48,7 +51,6 @@ class nginx::params {
             /^1[468].*$/:
             {
               $purge_default_vhost=undef
-              $package='nginx-light'
               $include_epel=false
               $require_epel=undef
               $username='www-data'
