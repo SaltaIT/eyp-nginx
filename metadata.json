@@ -1,7 +1,7 @@
 {
   "name": "eyp-nginx",
   "version": "0.2.27",
-  "author": "eyp",
+  "author": "Jordi Prats",
   "summary": "nginx management",
   "license": "Apache-2.0",
   "source": "https://github.com/SaltaIT/eyp-nginx",
