@@ -4,9 +4,9 @@
   "author": "eyp",
   "summary": "nginx management",
   "license": "Apache-2.0",
-  "source": "https://github.com/NTTCom-MS/eyp-nginx",
-  "project_page": "https://github.com/NTTCom-MS/eyp-nginx",
-  "issues_url": "https://github.com/NTTCom-MS/eyp-nginx/issues",
+  "source": "https://github.com/SaltaIT/eyp-nginx",
+  "project_page": "https://github.com/SaltaIT/eyp-nginx",
+  "issues_url": "https://github.com/SaltaIT/eyp-nginx/issues",
   "dependencies": [
     {"name":"puppetlabs/stdlib","version_requirement":">= 1.0.0 < 9.9.9"},
     {"name":"puppetlabs/concat","version_requirement":">= 1.2.3 < 9.9.9"},
