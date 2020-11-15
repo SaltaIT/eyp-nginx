@@ -1,6 +1,6 @@
 # nginx
 
-**NTTCom-MS/eyp-nginx**: [![Build Status](https://travis-ci.org/NTTCom-MS/eyp-nginx.png?branch=master)](https://travis-ci.org/NTTCom-MS/eyp-nginx)
+**SaltaIT/eyp-nginx**: [![Build Status](https://travis-ci.org/SaltaIT/eyp-nginx.png?branch=master)](https://travis-ci.org/SaltaIT/eyp-nginx)
 
 #### Table of Contents
 
